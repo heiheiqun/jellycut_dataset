@@ -1,0 +1,1502 @@
+[
+    {
+        "instruction": "Create an iOS shortcut:get the local ip address of the device and the type is IPv4",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: wifi\ngetIP(source: Local,type:IPv4) >> IP\nalert(alert: \"${IP}\",title: \"The local ip address\",cancel: false)"
+    },
+    {
+        "instruction": "Create an iOS shortcut:get the external ip address of the device and the type is IPv6",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: wifi\ngetIP(source: External,type:IPv6) >> IP\nalert(alert: \"${IP}\",title: \"The external ip address\",cancel: false)"
+    },
+    {
+        "instruction": "Create an iOS shortcut:get the name of wifi",
+        "input": "",
+        "output": "import Shortcuts\n#Color: green, #Icon: wifi\nwifiDetails(detail:NetWork Name) >> wifiName\nalert(alert: \"${wifiName}\",title: \"wifiName\",cancel: false)"
+    },
+    {
+        "instruction": "Create an iOS shortcut:airdrop the selected photos",
+        "input": "",
+        "output": "import Shortcuts\n#Color: tangerine, #Icon: airdrop\nselectPhoto(multiple: true) >> photos\nairdrop(file: photos) >> airdrop"
+    },
+    {
+        "instruction": "Create an iOS shortcut:plank timer--Time one minute at a time, with a maximum of three times",
+        "input": "",
+        "output": "import Shortcuts\n#Color: orange, #Icon: hourglass\nalert(alert: \"Ready！\"，,title: \"Plank\", cancel: true)\nwait(seconds: 60)\nvibrate()\nalert(alert: \"One more time?\", title: \"Good job!\")\nwait(seconds: 60)\nvibrate()\nalert(alert: \"One more time?\", title: \"Nice!\")\nwait(seconds: 60)\nvibrate()\nalert(alert: \"Finished！\", title: \"Excellent!\")"
+    },
+    {
+        "instruction": "Create an iOS shortcut:Turn on sleep mode(Turn off WiFi, Bluetooth, cellular)",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: moon\nsetWiFi(state: false)\nsetBluetooth(value:false)\nsetCellular(state: false)"
+    },
+    {
+        "instruction": "Create an iOS shortcut:Display the contents of the clipboard, edit it and set it as a new clipboard",
+        "input": "",
+        "output": "import Shortcuts\n#Color: grayBlue, #Icon: Shortcuts\ngetClipboard() >> Clipboard\ntext(text: \"${Clipboard}${Ask}\") >> Text\nsetClipboard(variable: Text, local: false, expiration:2025)\nexit()"
+    },
+    {
+        "instruction": "Create an iOS shortcut:Select a file and forward it to WeChat",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: magicWand\nselectFile(t: Repeat Item, apptype:Files) >> selectedFile\nvar File = selectedFile\nrepeatEach(File) \n{\n\topenIn(inpu: \"com.tencent.xin\", ask: false)\n\twaitToReturn()\n}"
+    },
+    {
+        "instruction": "Create an iOS shortcut:Set the last photo in the album that is not a screenshot as the clipboard",
+        "input": "",
+        "output": "import Shortcuts\n#Color: Red, #Icon: livePhoto\ngetLastPhoto(count:1,screenshots:false) >> LastPhoto\ngetImagesFrom(input: LastPhoto) >> Image\nsetClipboard(variable: Image, local: true)"
+    },
+    {
+        "instruction": "Create an iOS shortcut:Open the URL in the clipboard",
+        "input": "",
+        "output": "import Shortcuts\n#Color: Red, #Icon: globe\ngetClipboard() >> Clipboard\nopenURL(url: Clipboard)"
+    },
+    {
+        "instruction": "Create an iOS shortcut:Open the \"Type\" playlist - select from the Apple Music Radio radio station type page on Apple Music, and then open a deep link to the app.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: teal, #Icon: Shortcuts\nmenu(你想要打开哪个音乐向导页面？, [另类音乐, 蓝调音乐, 基督教音乐, 古典摇滚, 古典乐, 乡村音乐, 舞曲, 电子乐, 实验音乐, 硬摇滚, 嘻哈, 独立音乐, 爵士乐, 儿童与家庭音乐, 金属乐, 流行音乐, R&B, 雷鬼音乐, 摇滚, 唱作人, 灵魂乐/放克, 世界音乐]) {\ncase(\"另类音乐\"):\n\topenURL(url: \"https://geo.itunes.apple.com/us/curator/apple-music-alternative/id976439526?mt=1&app=music\")\ncase(\"蓝调音乐\"):\n\topenURL(url: \"https://geo.itunes.apple.com/us/curator/apple-music-blues/id976439528?mt=1&app=music\")\ncase(\"基督教音乐\"):\n\topenURL(url: \"https://geo.itunes.apple.com/us/curator/apple-music-christian-gospel/id976439529?mt=1&app=music\")\ncase(\"古典摇滚\"):\n\topenURL(url: \"https://geo.itunes.apple.com/us/curator/apple-music-classic-rock/id976439531?mt=1&app=music\")\ncase(\"古典乐\"):\n\topenURL(url: \"https://geo.itunes.apple.com/us/curator/apple-music-classical/id976439532?mt=1&app=music\")\ncase(\"乡村音乐\"):\n\topenURL(url: \"https://geo.itunes.apple.com/us/curator/apple-music-country/id976439534?mt=1&app=music\")\ncase(\"舞曲\"):\n\topenURL(url: \"https://geo.itunes.apple.com/us/curator/apple-music-dance/id976439535?mt=1&app=music\")\ncase(\"电子乐\"):\n\topenURL(url: \"https://geo.itunes.apple.com/us/curator/apple-music-electronic/id976439536?mt=1&app=music\")\ncase(\"实验音乐\"):\n\topenURL(url: \"https://geo.itunes.apple.com/us/curator/apple-music-experimental/id976439546?mt=1&app=music\")\ncase(\"硬摇滚\"):\n\topenURL(url: \"https://geo.itunes.apple.com/us/curator/apple-music-hard-rock/id979231690?mt=1&app=music\")\ncase(\"嘻哈\"):\n\topenURL(url: \"https://geo.itunes.apple.com/us/curator/apple-music-hip-hop/id976439539?mt=1&app=music\")\ncase(\"独立音乐\"):\n\topenURL(url: \"https://geo.itunes.apple.com/us/curator/apple-music-indie/id976439541?mt=1&app=music\")\ncase(\"爵士乐\"):\n\topenURL(url: \"https://geo.itunes.apple.com/us/curator/apple-music-jazz/id976439542?mt=1&app=music\")\ncase(\"儿童与家庭音乐\"):\n\topenURL(url: \"https://geo.itunes.apple.com/us/curator/apple-music-kids-family/id976439538?mt=1&app=music\")\ncase(\"金属乐\"):\n\topenURL(url: \"https://geo.itunes.apple.com/us/curator/apple-metal/id976439543?mt=1&app=music\")\ncase(\"流行音乐\"):\n\topenURL(url: \"https://geo.itunes.apple.com/us/curator/apple-music-pop/id976439548?mt=1&app=music\")\ncase(\"R&B\"):\n\topenURL(url: \"https://geo.itunes.apple.com/us/curator/apple-music-r-b/id976439551?mt=1&app=music\")\ncase(\"雷鬼音乐\"):\n\topenURL(url: \"https://geo.itunes.apple.com/us/curator/apple-music-reggae/id976439552?mt=1&app=music\")\ncase(\"摇滚\"):\n\topenURL(url: \"https://tools.applemusic.com/en-us/details/ra.985500499?country=us&media=all&term=rock\")\ncase(\"唱作人\"):\n\topenURL(url: \"https://geo.itunes.apple.com/us/curator/apple-music-singer-songwriter/id979231701?mt=1&app=music\")\ncase(\"灵魂乐/放克\"):\n\topenURL(url: \"https://geo.itunes.apple.com/us/curator/apple-music-soul-funk/id976439585?mt=1&app=music\")\ncase(\"世界音乐\"):\n\topenURL(url: \"https://geo.itunes.apple.com/us/curator/apple-music-world/id976439587?mt=1&app=music\")\n}"
+    },
+    {
+        "instruction": "Create an iOS shortcut:a tea brewing timer that can be used for black tea, Japanese green tea, Chinese green tea, and oolong tea",
+        "input": "",
+        "output": "import Shortcuts\n#Color: grayBlue, #Icon: clock\nmenu(\"choose\", [black tea, Japanese green tea, Chinese green tea, oolong tea, white tea, Pu'er tea]) {case(\"black tea\"):wait(seconds: 180)\ncase(\"Japanese green tea\"):wait(seconds: 60)\ncase(\"Chinese green tea\"):wait(seconds: 120)\ncase(\"oolong tea\"):wait(seconds: 120)\ncase(\"white tea\"):wait(seconds: 180)\ncase(\"Pu'er tea\"):wait(seconds: 120)} \nvibrate()"
+    },
+    {
+        "instruction": "Create an iOS shortcut:Open the website for scanned QR codes",
+        "input": "",
+        "output": "import Shortcuts\n#Color: Red, #Icon: Shortcuts\nscanQR() >> scannedQR\nsetClipboard(variable: scannedQR)\nmatchText(text: \"${scannedQR}\", regex: \"^https?:\\/\\/.*$\", caseSensitive: false) >> matchedText\nif(matchedText.contains \"http\") {\n\topenURL(url: matchedText)"
+    },
+    {
+        "instruction": "Create an iOS shortcut:send alert of your BatteryLevel",
+        "input": "",
+        "output": "import Shortcuts\n#Color: green, #Icon: battery\nbatteryLevel() >> BatteryLevel\nalert(alert: \"Your battery Is at ${BatteryLevel}%\")"
+    },
+    {
+        "instruction": "Create an iOS shortcut:save battery mode(Turn off Bluetooth, Wi-Fi, cellular, lower brightness, and enable low battery mode)",
+        "input": "",
+        "output": "import Shortcuts\n#Color: green, #Icon: battery\nsetBluetooth(value: false)\nsetWiFi(state: false)\nsetCellular(state: false)\nsetBrightness(value: 0.1)\nlowPowerMode(state: true)"
+    },
+    {
+        "instruction": "Create an iOS shortcut:Convenient payment (Alipay payment code, Alipay scanning code, WeChat scanning)",
+        "input": "",
+        "output": "import Shortcuts\n#Color: Red, #Icon: dollarSign\nmenu(, [支付宝付款码, 支付宝扫码, 微信扫一扫]) {\ncase(\"支付宝付款码\"):\n\topenURL(url: \"alipayqr://platformapi/startapp?saId=20000056\")\ncase(\"支付宝扫码\"):\n\topenURL(url: \"alipayqr://platformapi/startapp?saId=10000007\")\ncase(\"微信扫一扫\"):\n\topenURL(url: \"weixin://scanqrcode\")\n}"
+    },
+    {
+        "instruction": "Create an iOS shortcut:Continuously delete recent photos",
+        "input": "",
+        "output": "import Shortcuts\n#Color: purple, #Icon: picture\ngetLastPhoto(count: 50, screenshots: true) >> LastPhotos\nrepeatEach(LastPhotos) {\n\tdeletePhotos(photos: Repeat Item)\n\talert(alert: \"\", title: \"是否继续删除？\")\n}"
+    },
+    {
+        "instruction": "Create an iOS shortcut:Convert one LivePhoto from the camera roll to a movie and saves it to the camera roll",
+        "input": "",
+        "output": "import Shortcuts\n#Color: grayBrown, #Icon: movieCamera\nselectPhoto() >> selectedPhoto\nencodeMedia(media: selectedPhoto,speed:Normal) >> encodedMedia\nsaveToCameraRoll(image: encodedMedia,album:Recents) >> saveToCameraRoll\nsendNotification(body: \"The movie was saved in the camera roll.\", attachment: saveToCameraRoll)"
+    },
+    {
+        "instruction": "Create an iOS shortcut:Temperature Converter(Converts Fahrenheit to Celsius and vice versa)",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: thermometer\n\nmenu(What is the conversion?, [Celsius to Fahrenheit, Fahrenheit to Celsius]) {\ncase(\"Celsius to Fahrenheit\"):\n\taskForInput(prompt: \"What is the temperature?\", type: Number) >> PreConversionTemp\n\tmath(input: PreConversionTemp, operation: *, operand: \"1.8\") >> math\n\tmath(input: math, operation: +, operand: \"32\") >> math1\n\tround(number: math1, roundTo: Tenths) >> round\n\talert(alert: \"${PreConversionTemp}° C = ${round}° F\", title: \"Conversion Complete!\", cancel: false)\ncase(\"Fahrenheit to Celsius\"):\n\taskForInput(prompt: \"What is the temperature?\", type: Number) >> PreConversionTemp1\n\tmath(input: PreConversionTemp1, operation: -, operand: \"32\") >> math2\n\tmath(input: math2, operation: *, operand: \"0.5556\") >> math3\n\tround(number: math3, roundTo: Tenths) >> round1\n\talert(alert: \"${PreConversionTemp}° F = ${round1}° C\", title: \"Conversion Complete!\", cancel: false)\n} >> MenuResult"
+    },
+    {
+        "instruction": "Create an iOS shortcut:Convert a selected photo to GIF, then choose to share or save to the album",
+        "input": "",
+        "output": "import Shortcuts\n#Color: purple, #Icon: camera\nselectPhoto() >> selectedPhoto\nmakeGIF(content: selectedPhoto, frameTime: \"0.1\") >> makeGIF\nquicklook(input: makeGIF)\nmenu(What do you want to do with your new GIF?, [Share, Save to Photos]) {\ncase(\"Share\"):\n\tshare(file: makeGIF)\ncase(\"Save to Photos\"):\n\tsaveToCameraRoll(image: makeGIF)\n}"
+    },
+    {
+        "instruction": "Create an iOS shortcut:Convert a video to GIF",
+        "input": "",
+        "output": "import Shortcuts\n#Color: grape, #Icon: gift\nselectPhoto(types: [Videos]) >> selectPhoto\nmath(input: \"1\", operation: /, operand: \"30\") >> Result\nmakeGIF(content: selectPhoto, frameTime: Result) >> GIF\nquicklook(input: GIF)"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Cinema mode:(Turn on Airplane Mode, turn on Do Not Disturb, set brightness to 0.5, set volume to 0.5, turns on Low Power Mode",
+        "input": "",
+        "output": "import Shortcuts\n#Color: orange, #Icon: dramaMask\nmenu(Are you in the cinema or leaving?, [In, Leaving]) {\ncase(\"In\"):\n\tsetAirplaneMode()\n\tsetDND(state: true)\n\tsetBrightness(value: 0)\n\tsetVolume(level: 0)\n\ttoggleLowPowerMode()\ncase(\"Leaving\"):\n\tsetAirplaneMode(state: false)\n\tsetDND(state: false)\n\tsetBrightness(value: 0.5)\n\tsetVolume(level: 0.5)\n\tlowPowerMode(state: true)\n}"
+    },
+    {
+        "instruction": "Create an iOS shortcut:detect language from input",
+        "input": "",
+        "output": "import Shortcuts\n#Color: navy, #Icon: iPhoneWave\naskForInput(prompt: \"type\", type:Text)>>input\ndetectLanguage(text: \"${input}\")>>detectResult\nshowResult(text: \"${detectResult}\")"
+    },
+    {
+        "instruction": "Create an iOS shortcut",
+        "input": "",
+        "output": "import Shortcuts\n#Color: navy, #Icon: iPhoneWave\ncopyToClipboard(text: \"Get Clipboard Content\")\ngetClipBoard() >> Clipboard\ntext(text: \"${Clipboard}\") >> Text\ndetectLanguage(text: \"${Text}\") >> detectResult\nshowResult(text: \"${detectResult}\")"
+    },    
+    {
+        "instruction": "Create an iOS shortcut:select some files and delete them",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: folder\nselectFile(multiple: true) >> selectFile\ndeleteFile(input: selectFile, confirm: true)"
+    },
+    {
+        "instruction": "Create an iOS shortcut:efficient files action(share, delete, duplicate, rename)",
+        "input": "",
+        "output": "import Shortcuts\n#Color: grayBlue, #Icon: person2\n\nselectFile() >> selectedFile\nmenu(What do you wanna do, [share, delete, duplicate, rename]) \n{\n    case(\"share\"):\n        share(file: selectedFile) \n        alert(alert: \"You have shared successfully!\", title: \"File Actions\", cancel: false)\n    case(\"delete\"):\n        deleteFile(input: selectedFile) \n        alert(alert: \"You have deleted successfully!\", title: \"File Actions\", cancel: false)\n    case(\"duplicate\"):\n        saveFile(input: selectedFile) \n        alert(alert: \"You have duplicated successfully!\", title: \"File Actions\", cancel: false)\n    case(\"rename\"):\n        renameFile(file: selectedFile, name: \"${Ask}\") \n        alert(alert: \"You have renamed successfully!\", title: \"File Actions\", cancel: false)\n}"
+    },
+    {
+        "instruction": "Create an iOS shortcut:Set the clipboard as the iCloud link for the selected file",
+        "input": "",
+        "output": "import Shortcuts\n#Color: grayBlue, #Icon: person2\nselectFile() >> selectedFile\ngetFileLink(file: selectedFile)>>FileLink\nsetClipboard(variable: ${FileLink}, local:false )"
+    },
+    {
+        "instruction": "Create an iOS shortcut:combine two images from the album and then quicklook",
+        "input": "",
+        "output": "import Shortcuts\n#Color: grayBlue, #Icon: shortcuts\nselectPhoto(types: [\"Images\",\"Videos\"], multiple: true) >> Photos\ncombineImage(images: Photos, mode: Ask, spacing: Ask) >> Image\nquicklook(input: Image)"
+    },
+    {
+        "instruction": "Create an iOS shortcut:combine two images from the camera roll and then save it to the camera roll.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: grayBlue, #Icon: shortcuts\nselectPhoto(types: [\"Images\",\"Videos\"], multiple: true) >> Photos\ncombineImage(images: Photos, mode: Ask, spacing: Ask) >> combineImage\nsaveToCameraRoll(image: combineImage, album: \"Recents\")"
+    },
+    {
+        "instruction": "Create an iOS shortcut:AirDrop the last Screenshot",
+        "input": "",
+        "output": "import Shortcuts\n#Color: Red, #Icon: loadingIndicatorAlt\ngetLastScreenshot() >> LastScreenshot\nairdrop(file: LastScreenshot)"
+    },
+    {
+        "instruction": "Create an iOS shortcut:Select a photo from the album and set it as wallpaper for the lock screen and the home screen",
+        "input": "",
+        "output": "import Shortcuts\n#Color: yellow, #Icon: sloMo\nselectPhoto(types: [\"Images\",\"Videos\"], multiple: false) >> Photo\nchangeWallpaper(image:Photo, location:[Lock Screen, Home Screen] , preview: false)"
+    },
+    {
+        "instruction": "Create an iOS shortcut:Select a contact and call him",
+        "input": "",
+        "output": "import Shortcuts\n#Color: yellow, #Icon: sloMo\nselectContact(multiple: false)>>contact1\ncall(contact: contact1)"
+    },
+    {
+        "instruction": "Create an iOS shortcut:Select contacts and view their information",
+        "input": "",
+        "output": "import Shortcuts\n#Color: yellow, #Icon: sloMo\nselectContact(multiple: true)>>contactList\ncontactDetail(detail: First Name, contact: contactList)"
+    },
+    {
+        "instruction": "Create an iOS shortcut:Search for contacts whose company is NJU",
+        "input": "",
+        "output": "import Shortcuts\n#Color: yellow, #Icon: sloMo\nselectContact(multiple: true)>>contactList\nfilterContacts(contactList, filterType: All, filter: {Company: == : NJU}, sortBy: Creation Date, order: Oldest First, limit: 5)"
+    },
+    {
+        "instruction": "Create an iOS shortcut:get name of emoji",
+        "input": "",
+        "output": "import Shortcuts\n#Color: yellow, #Icon: smileyFace\n\nemojiName(input: \"${Ask}\") >> emojiName\nsendNotification(body: \"${emojiName}\", attachment: emojiName)"
+    },
+    {
+        "instruction": "Create an iOS shortcut:Send notification about the description and title for the selected podcast's episode.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: pink, #Icon: microphone\n\ngetPodcasts() >> Podcasts\nchoose(list: Podcasts, prompt: \"\", multiple: false) >> ChosenItem\ngetPodcastEpisodes(input: ChosenItem) >>Episodes \nchoose(list: Episodes, prompt: \"\") >>ChosenItem1\nplayPodcast(podcast: ChosenItem1)\npodcastEpisodeDetail(detail: Description, episode: ChosenItem1) >> podcastEpisodeDescription\npodcastEpisodeDetail(detail: Title, episode: ChosenItem1) >> podcastEpisodeTitle\nsendNotification(body: \"${podcastEpisodeDescription}\", title: \"${podcastEpisodeTitle}\", attachment: Podcasts)"
+    },
+    {
+        "instruction": "Create an iOS shortcut:Turn on airplane mode and take a video",
+        "input": "",
+        "output": "import Shortcuts\n#Color: pink, #Icon: microphone\nsetAirplaneMode(state: true)\ntakeVideo(camera: Back, quality: High, start: Imediately)"
+    },
+    {
+        "instruction": "Create an iOS shortcut:Download Twitter Videos",
+        "input": "",
+        "output": "import Shortcuts\n#Color: green, #Icon: circledPlay\nopenURL(url: \"https://twittervideodownload.com/\")"
+    },
+    {
+        "instruction": "Create an iOS shortcut: convert GIF to video then save the video to the camera roll",
+        "input": "",
+        "output": "import Shortcuts\n#Color: pink, #Icon: microphone\n\nfilterPhotos() >> Photos\nvideoFromGif(gif: Photos)>>Videos\nsaveToCameraRoll(image: Videos, album:\"Recents\" )"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Set dark appearance, wait for 60 minutess, then set light appearance",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: shortcuts\n\nwait(minutes: 60)\nsetAppearance(mode: dark)\nwait(minutes:60)\nsetAppearance(mode:light)"
+    },
+    {
+        "instruction": "Create an iOS shortcut: After waiting for 60 minutes, toogle appearance",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: shortcuts\n\nwait(minutes: 60)\ntoggleAppearance()()"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Select video and trim it",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: shortcuts\n\nselectPhoto(types: [Videos], multiple: false)>>Video\ntrimVideo(video:Videos)"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Create a pdf from a url then draw on it and then share",
+        "input": "",
+        "output": "import Shortcuts\n#Color: teal, #Icon: newsArticle\n\nurlContents(url: \"${Ask}\") >> ContentsOfWebPage\ncreatePDF(input: ContentsOfWebPage) >> PDF\nmarkup(input: PDF) >> MarkupResult\nshare(file: MarkupResult)"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Create a new Note with current date.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: Red, #Icon: noteTextPlus\ncreateNote(text: \"${CurrentDate}\", show: false) >> NewNote\naskForInput(prompt: \"What do you want it to say?\",type:Text) >> ProvidedInput\nappendNote(text: \"${ProvidedInput}\", note: NewNote) >> Note\nshowNote(note: Note)"
+    },
+    {
+        "instruction": "Create an iOS shortcut: turn text into audio",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: musicWaveForm\naskForInput(prompt: \"What's text?\", type: Text, default: )>> ProvidedInput\nspokenAudioFromText(text: \"${ProvidedInput}\", language:en-US,pitch:1.0,rate:0.5,voice:Alex) >> SpokenAudio\nquicklook(input: SpokenAudio)"
+    },
+    {
+        "instruction": "Create an iOS shortcut: reading mode",
+        "input": "",
+        "output": "import Shortcuts\n#Color: tangerine, #Icon: openBook\n\naskForInput(prompt: \"How many minutes do you want to read for?\", type: Number) >> ProvidedInput\nsetDND(state: true)\ntoggleAppearance()\ncalculate(input: \"${ProvidedInput}*60\")>>waitSecond\nwait(seconds: waitSecond)\nsetDND(state: false)\ntoggleAppearance()"
+    },
+    {
+        "instruction": "Create an iOS shortcut: speak hello in Chinese",
+        "input": "",
+        "output": "import Shortcuts\n#Color: grape, #Icon: shortcuts\n\ntext(text: \"你好\") >> Text\nspeakText(text: \"${Text}\", wait: false, rate: 0.4, pitch: true, language: zh-CN)"
+    },
+    {
+        "instruction": "Create an iOS shortcut: pronounce input in English",
+        "input": "",
+        "output": "import Shortcuts\n#Color: grape, #Icon: shortcuts\naskForInput(prompt: \"What text do you want to speak?\", type: Text)>>Text\nspeakText(text: \"${Text}\", wait: false, rate: 0.4, pitch: true, language: en-US)"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Log run",
+        "input": "",
+        "output": "import Shortcuts\n#Color: grape, #Icon: footprints\n\naskForInput(prompt: \"How many minutes was your run?\", type: Number) >> Duration\naskForInput(prompt: \"How many miles did you run (if known)?\", type: Number) >> Distance\naskForInput(prompt: \"How many calories did you burn (if known)?\", type: Number) >> Calories\nadjustDate(operation: Subtract, duration: Duration, date: \"${CurrentDate}\") >> StartTime\nlogWorkout(type: Running, date: \"${StartTime}\", duration:Duration minutes, calories:Calories , distance: Distance)"
+    },
+    {
+        "instruction": "Create an iOS shortcut: record audio",
+        "input": "",
+        "output": "import Shortcuts\n#Color: Red, #Icon: globe\nrecordAudio(quality: Normal, start: On Tap, end: After Time, duration: 10 min 15 sec)"
+    },
+    {
+        "instruction": "Create an iOS shortcut: search web for Jellycuts in Google",
+        "input": "",
+        "output": "import Shortcuts\n#Color: teal, #Icon: magnifyingGlass\n\nsearchWeb(text: \"Jellycuts\", destination: Google)"
+    },
+    {
+        "instruction": "Create an iOS shortcut: decode url",
+        "input": "",
+        "output": "import Shortcuts\n#Color: teal, #Icon: magnifyingGlass\ndecodeURL(url: \"Hello%20World\")"
+    },
+    {
+        "instruction": "Create an iOS shortcut: combine text",
+        "input": "",
+        "output": "import Shortcuts\n#Color: teal, #Icon: magnifyingGlass\ncombineText(text: Hello World, combine: Custom, separator: \",\")"
+    },
+    {
+        "instruction": "5% battery with notification",
+        "input": "",
+        "output": "import Shortcuts\n#Color: purple, #Icon: lightningBolt\nrepeat(150) {\n\tbatteryLevel() >> BatteryLevel\n\tif(BatteryLevel.as(Number) == LowBatteryLevel) {\n\t\tplaySound()\n\t\tvibrate()\n\t\ttext(text: \"Your battery level is ${BatteryLevel}%. \") >> Text\n\t\tspeakText(text: \"${Text}\")\n\t\texit()\n\t} else {\n\t\twait(seconds: 30)\n\t} >> IFResult\n}"
+    },
+    {
+        "instruction": "This shortcut toggles Cellular Data off and on waiting 5 seconds between. Then it gives verbal confirmation. I used this when in a weak signal area and I lose LTE. Sometimes this brings back LTE.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: green, #Icon: repostArrows\nsetCellular(state: false)\nwait(seconds: 5)\nsetCellular(state: true)\ntext(text: \"Cellular data has been reset.\") >> Text\nspeakText(text: \"${Text}\", rate: 0.5, pitch: 0.5)\nexit()"
+    },
+    {
+        "instruction": "get details of weather conditions",
+        "input": "",
+        "output": "import Shortcuts\n#Color: Red, #Icon: shortcuts\ngetCurrentConditions() >> WeatherConditions\nconditionDetail(detail: Temperature, condition: WeatherConditions)"
+    },
+    {
+        "instruction": "Instantly calculates the amount of time it will take for your phone to charge to 100%",
+        "input": "",
+        "output": "import Shortcuts\n#Color: teal, #Icon: battery\nbatteryLevel() >> BatteryLevel\nmath(input: \"100\", operation: -, operand: BatteryLevel) >> MathResult\nvar BatteryNeeded = MathResult\nmath(input: BatteryNeeded, operation: *, operand: \"110\") >> MathResult1\nmath(input: MathResult1, operation: /, operand: \"60\") >> MathResult2\nround(number: MathResult2) >> RoundedNumber\nvar TimeLeft = RoundedNumber\nif(TimeLeft.as(Number) > 120) {\n\tmath(input: TimeLeft, operation: -, operand: \"120\") >> MathResult3\n    var minutes = MathResult3\n\tshowResult(text: \"Your phone is at ${BatteryLevel}%It will take 2 hours and ${minutes} minutes to charge to 100%\")\n}\nelse{\n\tif(TimeLeft.as(Number) >60) {\n\t\tmath(input: TimeLeft, operation: -, operand: \"60\") >> MathResult4\n        var minutes = MathResult4\n\t\tshowResult(text: \"Your phone is at ${BatteryLevel}%It will take 1 hour and ${minutes} minutes to charge to 100%\")\n\t}\n    else {\n\tshowResult(text: \"Your phone is at ${BatteryLevel}%It will take ${TimeLeft} minutes to charge to 100%\")\n    }\n}"
+    },
+    {
+        "instruction": "With this shortcut, you can easily get details of if you should wear short sleeves or long sleeves, shorts or pants, or a rain coat, all depending on the weather!",
+        "input": "",
+        "output": "import Shortcuts\n#Color: teal, #Icon: person2\ngetForecast(type: Hourly) >> WeatherConditions\nconditionDetail(detail: Precipitation Chance, condition: WeatherConditions) >> PrecipitationChance\nconditionDetail(detail: Temperature, condition: WeatherConditions) >> Temperature\nstatistic(input: PrecipitationChance,operation:Average) >> AveragePrecipitationChance\nstatistic(input: Temperature,operation:Average) >> AverageTemperature\nround(number: AveragePrecipitationChance,roundTo:Ones Place) >> RoundedAverage\nif(RoundedAverage.as(Number) < 75) {\n\ttext(text: \" Also, it might rain today, so you might want to wear a rain coat if you are going anywhere.\") >> Text\n    var RainWarning = Text\n} \nelse {\n    text(text: \" Also, it most likely will rain today, so you might want to wear a rain coat if you are going anywhere.\") >> Text1\n    var RainWarning = Text1\n}\nif(AverageTemperature.as(Number) < 56) {\n\talert(alert: \"Based on the average of the temperature today, you should wear pants and long sleeves.${RainWarning}\", cancel: false)\n} \nelse {\n\t\tif(AverageTemperature.as(Number) > 65) {\n\t\t\talert(alert: \"Based on the average of the temperature today, you should wear short sleeves and shorts.${RainWarning}\", cancel: false)\n\t\t}\n        else{\n            alert(alert: \"Based on the average of the temperature today, you should wear short sleeves and pants.${RainWarning}\", cancel: false)\n        }\n\t}\n}"
+    },
+    {
+        "instruction": "This shortcut helps you decide what to wear based on daily weather conditions!",
+        "input": "",
+        "output": "import Shortcuts\n#Color: teal, #Icon: person2\ngetForecast(type: Daily) >> WeatherConditions\nconditionDetail(detail: Precipitation Chance, condition: WeatherConditions) >> PrecipitationChance\nconditionDetail(detail: Temperature, condition: WeatherConditions) >> Temperature\nstatistic(input: PrecipitationChance,operation:Average) >> AveragePrecipitationChance\nstatistic(input: Temperature,operation:Average) >> AverageTemperature\nround(number: AveragePrecipitationChance,roundTo:Ones Place) >> RoundedAverage\nif(RoundedAverage.as(Number) < 75) {\n\ttext(text: \" Also, it might rain today, so you might want to wear a rain coat if you are going anywhere.\") >> Text\n    var RainWarning = Text\n} \nelse {\n    text(text: \" Also, it most likely will rain today, so you might want to wear a rain coat if you are going anywhere.\") >> Text1\n    var RainWarning = Text1\n}\nif(AverageTemperature.as(Number) < 56) {\n\talert(alert: \"Based on the average temperature for the day, you should wear pants and long sleeves.${RainWarning}\", cancel: false)\n} \nelse {\n\t\tif(AverageTemperature.as(Number) > 65) {\n\t\t\talert(alert: \"Based on the average temperature for the day, you should wear short sleeves and shorts.${RainWarning}\", cancel: false)\n\t\t}\n        else{\n            alert(alert: \"Based on the average temperature for the day, you should wear short sleeves and pants.${RainWarning}\", cancel: false)\n        }\n\t}\n}"
+    },    
+    {
+        "instruction": "talking flashlight:When you say, turn on flashlight, then your device's flashlight will turn on. When you say turn off flashlight, then your device’s flashlight will turn off.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: lightBlue, #Icon: sun\nalert(alert: \"Say, \\\"Turn on flashlight\\\" when prompted \")\ndictateText() >> DictatedText\nif(DictatedText.as(Text) == \"Turn on flashlight\") {\n\ttoggleFlashlight()\n\tdictateText(endTrigger: On Tap) >> DictatedText1\n\tif(DictatedText1.as(Text) == \"Turn off flashlight\") {\n\t\ttoggleFlashlight()\n\t}\n}"
+    },
+    {
+        "instruction": "This blinks your flashlight continuously in case you are in the woods stuck and want to grab someone’s attention. Note the shortcut is set to 50 blinks; you can change it and make sure the flashlight is set to high for best results.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: lightbulb\nrepeat(50) {\n\ttoggleFlashlight()\n\ttoggleFlashlight()\n\ttoggleFlashlight()\n\ttoggleFlashlight()\n\ttoggleFlashlight()\n\ttoggleFlashlight()\n} >> RepeatResult\ntoggleFlashlight()"
+    },
+    {
+        "instruction": "Calculate how many days are left from today to Thanksgiving",
+        "input": "",
+        "output": "import Shortcuts\n#Color: teal, #Icon: star\nformatDate(date: \"${CurrentDate}\", tStyle: None) >> FormattedDate\nvar Today = FormattedDate\ndate(date: Nov 28 2024) >> Date\nformatDate(date: \"${Date}\", tStyle: None) >> FormattedDate1\nvar ThanksGivingDay = FormattedDate1\ngetTimeBetween(first: ThanksGivingDay, second: Today, interval: Days) >> TimeBetweenDates\nalert(alert: \"There are ${TimeBetweenDates} days until ThanksGiving Day\", title: \"\", cancel: true)"
+    },
+    {
+        "instruction": "Concatenate Long Images",
+        "input": "",
+        "output": "import Shortcuts\n#Color: orange, #Icon: atom\naskForInput(prompt: \"How many images do you want to concatenate?\", type: Number) >> ProvidedInput\nvar pic=\"\"\nrepeat(ProvidedInput) {\n\tsendNotification(body: \"\", title: \"Please select the ${Repeat Index} image\", sound: false)\n\tselectPhoto() >> selectedPhoto\n\tpic += selectedPhoto\n}\nsendNotification(body: \"\", title: \"Long screenshot being created, please wait…\", sound: false)\ncombineImage(images: pic, mode: Vertically) >> CombinedImage\nsaveToCameraRoll(image: CombinedImage) >> SavedPhotoMedia\nquicklook(input: SavedPhotoMedia)\nexit()"
+    },
+    {
+        "instruction": "Generate QR Code from Text",
+        "input": "",
+        "output": "import Shortcuts\n#Color: grape, #Icon: QRCode\naskForInput(prompt: \"\", type: Text) >> ProvidedInput\ncreateQR(text: \"${ProvidedInput}\") >> QRCode\nsaveToCameraRoll(image: QRCode) >> saveToCameraRoll\nsendNotification(body: \"QR Code generated and saved to photo album!\", title: \"\", attachment: saveToCameraRoll)"
+    },
+    {
+        "instruction": "Create a 3x3 Grid from a Photo and Save to Album",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: picture\nselectPhoto() >> Photo\nmarkup(input: Photo) >> MarkupResult\nvar Origin = MarkupResult\nimageDetail(detail: Width, image: Origin) >> Width\nmath(input: Width, operation: /, operand: \"3\") >> CalculationResult\nvar WidthofCrop = CalculationResult\nrepeat(3) {\n\tmath(input: Repeat Index, operation: -, operand: \"1\") >> CalculationResult1\n    var ItemY = CalculationResult1\n\tmath(input: WidthofCrop, operation: *, operand: ItemY) >> CalculationResult2\n    var PositionY = CalculationResult2\n\trepeat(3) {\n\t\tmath(input: Repeat Index 2, operation: -, operand: 1) >> CalculationResult3\n        var ItemX = CalculationResult3\n\t\tmath(input: WidthofCrop, operation: *, operand: ItemX) >> CalculationResult4\n        var PositionX = CalculationResult4\n\t\tcropImage(image: Origin, position: Custom, height: WidthofCrop, width: WidthofCrop, x: PositionX, y: PositionY) >> CroppedImage\n\t\tsaveToCameraRoll(image: CroppedImage) >> saveToCameraRoll\n\t} >> RepeatResult\n} >> RepeatResult1"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Four-Grid Photo Layout",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: picture\nselectPhoto() >> Photo\nmarkup(input: Photo) >> MarkupResult\nvar Origin = MarkupResult\nimageDetail(detail: Width, image: Origin) >> Width\nmath(input: Width, operation: /, operand: \"2\") >> CalculationResult\nvar WidthofCrop = CalculationResult\nrepeat(2) {\n    math(input: Repeat Index, operation: -, operand: \"1\") >> CalculationResult1\n    var ItemY = CalculationResult1\n    math(input: WidthofCrop, operation: *, operand: ItemY) >> CalculationResult2\n    var PositionY = CalculationResult2\n    repeat(2) {\n        math(input: Repeat Index 2, operation: -, operand: 1) >> CalculationResult3\n        var ItemX = CalculationResult3\n        math(input: WidthofCrop, operation: *, operand: ItemX) >> CalculationResult4\n        var PositionX = CalculationResult4\n        cropImage(image: Origin, position: Custom, height: WidthofCrop, width: WidthofCrop, x: PositionX, y: PositionY) >> CroppedImage\n        saveToCameraRoll(image: CroppedImage) >> saveToCameraRoll\n    }\n} >> RepeatResult1"
+    },
+    {
+        "instruction": "Create an iOS shortcut: 2x3 Grid Layout",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: grid\nselectPhotos() >> Photos\nsplit(splitSize: 2, input: Photos) >> SplitPhotos\nvar Origin = SplitPhotos[0]\nimageDetail(detail: Width, image: Origin) >> Width\nmath(input: Width, operation: /, operand: \"3\") >> CalculationResult\nvar WidthofCrop = CalculationResult\nrepeat(2) {\n    math(input: Repeat Index, operation: -, operand: \"1\") >> CalculationResult1\n    var ItemY = CalculationResult1\n    math(input: WidthofCrop, operation: *, operand: ItemY) >> CalculationResult2\n    var PositionY = CalculationResult2\n    repeat(3) {\n        math(input: Repeat Index 2, operation: -, operand: 1) >> CalculationResult3\n        var ItemX = CalculationResult3\n        math(input: WidthofCrop, operation: *, operand: ItemX) >> CalculationResult4\n        var PositionX = CalculationResult4\n        cropImage(image: Origin, position: Custom, height: WidthofCrop, width: WidthofCrop, x: PositionX, y: PositionY) >> CroppedImage\n        saveToCameraRoll(image: CroppedImage) >> saveToCameraRoll\n    }\n} >> RepeatResult1"
+    },        
+    {
+        "instruction": "Play 'Sleep Sounds' Playlist at 22:00",
+        "input": "",
+        "output": "import Shortcuts\n#Color: Red, #Icon: shortcuts\nformatDate(date: \"${CurrentDate}\", dStyle: None, tStyle: Short) >> formattedDate\nround(number: formattedDate, roundTo: Ones Place) >> RoundedNumber\nif (RoundedNumber.as(Number) = 22) {\n    getPlaylist(name: \"Sleep Sounds\") >> PlayList\n    playMusic(music: PlayList)\n} else {\n} >> IFResult"
+    },
+    {
+        "instruction": "Select and open a music streaming service from QQ Music, NetEase Cloud Music, or KuGou Music",
+        "input": "",
+        "output": "import Shortcuts\n#Color: purple, #Icon: musicNote\nmenu(\"选择音乐服务\", [\"QQ音乐\", \"网易云音乐\", \"酷我音乐\"]) {\n    case(\"QQ音乐\"):\n        openURL(url: \"https://y.qq.com\")\n        alert(alert: \"正在打开QQ音乐\", title: \"音乐服务\", cancel: false)\n    case(\"网易云音乐\"):\n        openURL(url: \"https://music.163.com\")\n        alert(alert: \"正在打开网易云音乐\", title: \"音乐服务\", cancel: false)\n    case(\"酷我音乐\"):\n        openURL(url: \"http://www.kuwo.cn\")\n        alert(alert: \"正在打开酷我音乐\", title: \"音乐服务\", cancel: false)\n}"
+    },
+    {
+        "instruction": "Obtain and display the current geographical location's longitude, latitude, and altitude",
+        "input": "",
+        "output": "import Shortcuts\n#Color: green, #Icon: globe\ngetLocation() >> CurrentLocation\nlocationDetail(detail: Altitude, location: CurrentLocation) >> CurrentAltitude\nlocationDetail(detail: Latitude, location: CurrentLocation) >> CurrentLatitude\nlocationDetail(detail: Longitude, location: CurrentLocation) >> CurrentLongitude\nsendNotification(body: \"The Altitude is ${CurrentAltitude} Meters from sea level\nThe latitude is ${CurrentLatitude}, and the longitude is ${CurrentLongitude}\")"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Get Location and Speak Details",
+        "input": "",
+        "output": "import Shortcuts\n#Color: green, #Icon: globe\ngetLocation() >> CurrentLocation\nlocationDetail(detail: Altitude, location: CurrentLocation) >> CurrentAltitude\nlocationDetail(detail: Latitude, location: CurrentLocation) >> CurrentLatitude\nlocationDetail(detail: Longitude, location: CurrentLocation) >> CurrentLongitude\ntext(text: \"The Altitude is ${CurrentAltitude} Meters from sea level. The latitude is ${CurrentLatitude}, and the longitude is ${CurrentLongitude}\") >> Text\nspeakText(text: \"${Text}\")"
+    },    
+    {
+        "instruction": "Set the device for night mode by adjusting DND, volume, brightness, Bluetooth, WiFi, and toggling airplane mode",
+        "input": "",
+        "output": "import Shortcuts\n#Color: grayBlue, #Icon: moon\nsetDND(state: true)\nsetVolume(level: 0.2022222280502319)\nsetBrightness(value: 0.2085889577865601)\nsetBluetooth(value: true)\nsetWiFi(state: false)\ntoggleAirplaneMode()"
+    },
+    {
+        "instruction": "Quickly navigate to a website to view the price history of a product listed on Amazon",
+        "input": "",
+        "output": "import Shortcuts\n#Color: green, #Icon: shoppingCart\ngetItemFromList(list: ShortcutInput) >> ItemFromList\nencodeURL(url: \"${ItemFromList}\") >> URLEncodedText\ntext(text: \"https://pennyparrot.com/search?query=${URLEncodedText}&utm_source=shortcuts\") >> Text\nshowWebPage(url: \"${Text}\", reader: false)"
+    },
+    {
+        "instruction": "Choose how long to cook eggs and set a timer for soft, medium, or hard yolk, including reminders about boiling water and not turning off the phone screen",
+        "input": "",
+        "output": "import Shortcuts\n#Color: tangerine, #Icon: hourglass\nalert(alert: \"\", title: \"Make sure the water is boiling hot enough with bubbles\", cancel: true)\nalert(alert: \"If the screen is off, this Shortcut will be stopped\", title: \"Do not leave your phone's screen turned off while running this Shortcut\", cancel: false)\nmenu(How do you like your eggs?, [\"Soft Yolk  -  3min\", \"Medium Yolk  -  5min\", \"Hard Yolk  -  9min\"]) {\n    case(\"Soft Yolk  -  3min\"):\n        wait(seconds: 180)\n        alert(alert: \"Please! Take your eggs up\", title: \"The yolk has enough time\", cancel: false)\n    case(\"Medium Yolk  -  5min\"):\n        wait(seconds: 300)\n        alert(alert: \"Please! Take your eggs up\", title: \"The yolk has enough time\", cancel: false)\n    case(\"Hard Yolk  -  9min\"):\n        wait(seconds: 540)\n        alert(alert: \"Please! Take your eggs up\", title: \"The yolk has enough time\", cancel: false)\n} >> MenuResult"
+    },
+    {
+        "instruction": "Share Shortcuts with Multiple Selection",
+        "input": "",
+        "output": "import Shortcuts\n#Color: grayGreen, #Icon: chainlink\ngetShortcuts() >> Shortcuts\nchoose(list: Shortcuts, prompt: \"${My Shortcuts}\", multiple: true) >> ChosenItem\nvar App = ChosenItem\nshare(file: App)"
+    },
+    {
+        "instruction": "Launch Instagram Story Camera",
+        "input": "",
+        "output": "import Shortcuts\n#Color: navy, #Icon: camera\nurl(url: \"instagram://story-camera\") >> URL\nopenURL(url: URL)\noutput(result: \"${URL}\")"
+    },
+    {
+        "instruction": "Check Network, Battery, or Device Details",
+        "input": "",
+        "output": "import Shortcuts\n#Color: Red, #Icon: shortcuts\nmenu(\"Scan what\", [\"Find network\", \"Find battery level\", \"Device details\"]) {\n    case(\"Find network\"):\n        wifiDetails() >> NetworkDetails\n        var Nd = NetworkDetails\n        sendNotification(body: \"${Nd}\", attachment: Nd)\n    case(\"Find battery level\"):\n        batteryLevel() >> BatteryLevel\n        if (BatteryLevel.as(Number) <= 50) {\n            sendNotification(body: \"Hi, your battery level is less than or equal to 50%. Turning brightness down.. please stand by\", title: \"Battery low\", attachment: BatteryLevel)\n            setBrightness(value: 0.5)\n            sendNotification(body: \"Brightness: 50%\")\n        } else {\n            batteryLevel() >> BatteryLevel1\n            sendNotification(body: \"Battery level: ${BatteryLevel1}%\")\n        } >> IFResult\n    case(\"Device details\"):\n        deviceDetails(detail: Ask) >> DeviceDetails\n        sendNotification(body: \"${DeviceDetails}\", attachment: DeviceDetails) >> sendNotification1\n} >> MenuResult"
+    },
+    {
+        "instruction": "Adjust Screen Brightness Options",
+        "input": "",
+        "output": "import Shortcuts\n#Color: navy, #Icon: sun\nlist(items: [\"Very High Screen Brightness\", \"High Screen Brightness\", \"Normal Screen Brightness\", \"Low Screen Brightness\", \"Very Low Screen Brightness\", \"Bed Time Mode\"]) >> List\nchoose(list: List, prompt: \"Very High Brightness it may affect battery life.\") >> ChosenItem\nif (ChosenItem.as(Text) == \"Very High Screen Brightness\") {\n    sendNotification(body: \"It may affect battery life.\", title: \"Very High Screen Brightness\", sound: true, attachment: ChosenItem)\n    setBrightness(value: 0.99)\n} else {\n} >> IFResult\nif (IFResult.as(Text) == \"High Screen Brightness\") {\n    sendNotification(body: \"It may affect battery life.\", title: \"High Screen Brightness.\", attachment: IFResult)\n    setBrightness(value: 0.7459999918937683)\n} else {\n} >> IFResult1\nif (IFResult1.as(Text) == \"Normal Screen Brightness\") {\n    setBrightness(value: 0.4979999959468842)\n    sendNotification(body: \"May help preserve battery life.\", title: \"Normal Screen Brightness.\", attachment: IFResult1)\n} else {\n} >> IFResult2\nif (IFResult2.as(Text) == \"Low Screen Brightness\") {\n    setBrightness(value: 0.3499999940395355)\n    sendNotification(body: \"It help preserve battery life.\", title: \"Low Screen Brightness.\", attachment: IFResult2)\n} else {\n} >> IFResult3\nif (IFResult3.as(Text) == \"Very Low Screen Brightness\") {\n    setBrightness(value: 0.1920000016689301)\n    sendNotification(body: \"Save more battery life.\", title: \"Very Low Screen Brightness.\", attachment: IFResult3)\n} else {}\n>> IFResult4\nif (IFResult4.as(Text) == \"Bed Time Mode\") {\n    setBrightness(value: 0)\n    sendNotification(body: \"Good Night\", title: \"Bed Time Mode\", attachment: IFResult4)\n} else {\n} >> IFResult5"
+    },
+    {
+        "instruction": "Find lyrics for the currently playing song",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: musicNoteList\ngetCurrentSong() >> CurrentSong\nif (CurrentSong != nil) {\n    url(url: \"https://duckduckgo.com/?q=!ducky+azlyrics.com+${CurrentSong.get(Title)}+${CurrentSong.get(Artist)}\") >> URL\n    showWebPage(url: \"${URL}\", reader: false)\n}"
+    },
+    {
+        "instruction": "Open a translation service from Google Translate, Youdao Translate, or Baidu Translate",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: repostArrows\nmenu(\"Select Translation Service\", [\"Google Translate\", \"Youdao Translate\", \"Baidu Translate\"]) {\n    case(\"Google Translate\"):\n        openURL(url: \"https://translate.googleusercontent.com/translate_c?depth=1&nv=1&rurl=translate.google.com.hk&tl=zh-CN\")\n    case(\"Youdao Translate\"):\n        openURL(url: \"http://fanyi.youdao.com/WebpageTranslate?keyfrom=fanyi.web.index&type=AUTO\")\n    case(\"Baidu Translate\"):\n        openURL(url: \"http://fanyi.baidu.com/transpage?query=${\"\"}&source=url&ie=utf8&from=auto&to=zh&render=1\")\n}"
+    },
+    {
+        "instruction": "Search for items on Taobao based on user input",
+        "input": "",
+        "output": "import Shortcuts\n#Color: navy, #Icon: magicWand\naskForInput(prompt: \"What do you want to buy?\") >> ProvidedInput\ndecodeURL(url: \"${ProvidedInput}\") >> decodeURL\nurl(url: \"https://s.2.taobao.com/list/list.htm?q=${ProvidedInput}&search_type=item&_input_charset=utf8\") >> URL\nopenURL(url: URL)"
+    },
+    {
+        "instruction": "Search using custom search engines on Chrome",
+        "input": "",
+        "output": "import Shortcuts\n#Color: navy, #Icon: list\ncombineText(text: ShortcutInput, combine: Custom, separator: \"Search Aggregator Chrome Custom Search Engine by mrbian\") >> combinedText\naskForInput(prompt: \"Enter search query\", type: Text, default: ) >> ProvidedInput\nvar gets = ProvidedInput\nreplaceText(input: \"${gets}\", find: \"\\s.*\", replace: \"\", isRegex: true, caseSensitive: false) >> UpdatedText\nvar searchkey = UpdatedText\nmatchText(text: \"${searchkey}\", regex: \"\\s.*\", caseSensitive: false) >> Matches\nvar searchword = Matches\ndictionary(json: {\"bd\":\"https://www.baidu.com/s?wd=\",\"zh\":\"http://www.zhihu.com/search?q=\",\"wb\":\"http://s.weibo.com/weibo/%s?frm=opensearch\",\"bi\":\"https://search.bilibili.com/all?keyword=\",\"tb\":\"http://s.taobao.com/search?q=\",\"zdm\":\"http://search.smzdm.com/?c=post&s=\",\"wk\":\"https://en.wikipedia.org/w/index.php?title=Special:Search&search=\",\"dt\":\"http://ditu.amap.com/search?query=\"}) >> Dictionary\nkeysFrom(dictionary: Dictionary) >> DictionaryValue\nvar searchurl = DictionaryValue\nurl(url: \"${searchurl}${searchword}\") >> URL\nopenURL(url: URL)\nexit()"
+    },
+    {
+        "instruction": "Calculate nutritional percentages or desired serving size",
+        "input": "",
+        "output": "import Shortcuts\n#Color: orange, #Icon: utensils\nmenu(\"Select Calculation Method\", [\"Nutritional Percentages\", \"Desired Serving\"]) {\n    case(\"Nutritional Percentages\"):\n        askForInput(prompt: \"Serving Size\", type: Number) >> ServingSize\n        askForInput(prompt: \"Total Fats\", type: Number) >> FatInput\n        math(input: FatInput, operation: /, operand: ServingSize) >> Fats\n        math(input: Fats, operation: *, operand: \"100\") >> CalculationResult\n        formatNumber(number: CalculationResult, places: 1) >> FatsFormatted\n        askForInput(prompt: \"Total Carbs\", type: Number) >> CarbsInput\n        math(input: CarbsInput, operation: /, operand: ServingSize) >> Carbs\n        math(input: Carbs, operation: *, operand: \"100\") >> CalculationResult1\n        formatNumber(number: CalculationResult1, places: 1) >> CarbsFormatted\n        askForInput(prompt: \"Total Proteins\", type: Number) >> ProtiensInput\n        math(input: ProtiensInput, operation: /, operand: ServingSize) >> Proteins\n        math(input: Proteins, operation: *, operand: \"100\") >> CalculationResult2\n        formatNumber(number: CalculationResult2, places: 1) >> ProteinsFormatted\n        alert(alert: \"Fats = ${FatsFormatted}% ,Carbs = ${CarbsFormatted}%,Proteins = ${ProteinsFormatted}%\", title: \"Results\", cancel: false)\n    case(\"Desired Serving\"):\n        askForInput(prompt: \"Fats Percentage\", type: Number) >> FatsPercentage\n        math(input: FatsPercentage, operation: /, operand: \"100\") >> FatsCalculation\n        askForInput(prompt: \"Carbs Percentage\", type: Number) >> CarbsPercentage\n        math(input: CarbsPercentage, operation: /, operand: \"100\") >> CarbsCalculation\n        askForInput(prompt: \"Proteins Percentage\", type: Number) >> ProteinsPercentage\n        math(input: ProteinsPercentage, operation: /, operand: \"100\") >> ProteinsCalculation\n        askForInput(prompt: \"Desired Serving\", type: Number) >> DesiredServing\n        math(input: DesiredServing, operation: *, operand: FatsCalculation) >> CalculationResult3\n        formatNumber(number: CalculationResult3, places: 1) >> FatsFormatted1\n        math(input: DesiredServing, operation: *, operand: CarbsCalculation) >> CalculationResult4\n        formatNumber(number: CalculationResult4, places: 1) >> CarbsFormatted1\n        math(input: DesiredServing, operation: *, operand: ProteinsCalculation) >> CalculationResult5\n        formatNumber(number: CalculationResult5, places: 1) >> ProteinsFormatted1\n        alert(alert: \"Fats = ${FatsFormatted1}% ,Carbs = ${CarbsFormatted1}%,Proteins = ${ProteinsFormatted1}%\", title: \"Results\", cancel: false)\n}"
+    },
+    {
+        "instruction": "Calculate BMI based on weight and height input",
+        "input": "",
+        "output": "import Shortcuts\n#Color: green, #Icon: man\naskForInput(prompt: \"What is your weight? 'For example : 80 Kg'\", type: Number) >> ProvidedInput1\naskForInput(prompt: \"What is your height? 'For Example : 1.85'\", type: Number, allowDecimal: true) >> ProvidedInput2\nmath(input: ProvidedInput2, operation: \"^\", operand: 2, scientific: true) >> CalculationResult\nmath(input: ProvidedInput1, operation: \"/\", operand: CalculationResult) >> CalculationResult1\nround(number: CalculationResult1) >> RoundedNumber\nvar bmi = \"Your BMI is ${RoundedNumber} \nNormal range is 18-25\"\ntext(\"${bmi}\") >> Text\nshowResult(text: \"${Text}\")"
+    },
+    {
+        "instruction": "Select a contact and airdrop their first name, last name, and birthday",
+        "input": "",
+        "output": "import Shortcuts\n#Color: green, #Icon: Shortcuts\nselectContact(multiple: false) >> SelectedContact\ncontactDetail(detail: First Name, contact: SelectedContact) >> FirstName\ncontactDetail(detail: Last Name, contact: SelectedContact) >> LastName\ncontactDetail(detail: Birthday, contact: SelectedContact) >> Birthday\nvar info = \"\"\"\nFirst Name: ${FirstName}\nLast Name: ${LastName}\nBirthday: ${Birthday}\n\"\"\"\nairdrop(file: info)"
+    },
+    {
+        "instruction": "Select a photo, encode it into AIFF format, and save the encoded audio file",
+        "input": "",
+        "output": "import Shortcuts\n#Color: navy, #Icon: videoIcon\nselectPhoto() >> Photos\nencodeAudio(media: Photos, format: AIFF) >> EncodedMedia\nsaveFile(input: EncodedMedia, ask: true)"
+    },
+    {
+        "instruction": "Select a photo, encode it into M4A format, and save the encoded audio file",
+        "input": "",
+        "output": "import Shortcuts\n#Color: navy, #Icon: videoIcon\nselectPhoto() >> Photos\nencodeAudio(media: Photos, format: M4A) >> EncodedMedia\nsaveFile(input: EncodedMedia, ask: true)"
+    },
+    {
+        "instruction": "Select a file, encode it, and save the encoded file",
+        "input": "",
+        "output": "import Shortcuts\n#Color: navy, #Icon: musicNote\nselectFile() >> File\nchoose(list: File) >> ChosenItem\nencodeMedia(media: ChosenItem) >> EncodedMedia\nsaveFile(input: EncodedMedia)"
+    },
+    {
+        "instruction": "Calculate tip and total bill based on percentage input",
+        "input": "",
+        "output": "import Shortcuts\n#Color: green, #Icon: dollarSign\naskForInput(prompt: \"What's the bill?\", type: Number) >> ProvidedInput\nlist(items: [\"5%\",\"10%\",\"15%\",\"20%\",\"25%\",\"30%\"]) >> List\nchoose(list: List, prompt: \"What percentage?\") >> ChosenItem\nmath(input: ChosenItem, operation: \"/\", operand: \"100\") >> CalculationResult\nmath(input: ProvidedInput, operation: \"*\", operand: CalculationResult) >> tip\nmath(input: tip, operation: \"+\", operand: ProvidedInput) >> total\nvar Result = \"\"\"Your tip is ${tip}\nYour total is ${total}\"\"\"\ntext(\"${Result}\") >> Text\nshowResult(text: \"${Text}\")"
+    },
+    {
+        "instruction": "Scan a QR code and copy the result to the clipboard",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: barcode\nscanQR() >> scanResult\nvar Qr = scanResult\nsetClipboard(variable: Qr, local: false)\nalert(alert: \"Paste the code copied to your clipboard in the website search bar\", title: \"Bar Code Scanner\", cancel: false)"
+    },
+    {
+        "instruction": "Open the GoMovies website, speak 'Enjoy your movie', and exit the shortcut",
+        "input": "",
+        "output": "import Shortcuts\n#Color: yellow, #Icon: ticket\nopenURL(url: \"https://gomovies-online.me/index.html\")\nspeakText(text: \"Enjoy your movie\")\nexit()"
+    },
+    {
+        "instruction": "Create a note about your workout including what you worked on, duration, and calories burned",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: personSprinting\naskForInput(prompt: \"What did you work on?\", type: Text) >> ProvidedInput\ntext(text: \"${ProvidedInput}\") >> Text\naskForInput(prompt: \"For how many minutes?\", type: Number) >> ProvidedInput1\nnumber(value: ProvidedInput1) >> number1\naskForInput(prompt: \"How many calories did you burn?\", type: Number) >> ProvidedInput2\nnumber(value: ProvidedInput2) >> number2\ntext(text: \"${Text}\") >> Text1\nvar info = \"\"\"${CurrentDate}\nI worked on ${Text} today for ${number1} minutes.\nI burned ${number2} calories.\"\"\"\ntext(\"${info}\") >> Text1\ncreateNote(text: \"${Text1}\")"
+    },
+    {
+        "instruction": "Get RSS items from a specified URL, create a note with the items, and exit",
+        "input": "",
+        "output": "import Shortcuts\n#Color: Red, #Icon: shortcuts\ngetRSSItems(url: \"${Ask}\") >> ItemsFromRSSFeed\ncreateNote(text: \"${ItemsFromRSSFeed}\")\nexit()"
+    },
+    {
+        "instruction": "Retrieve the contents of a web page from a specified URL, create a note with the contents, and exit",
+        "input": "",
+        "output": "import Shortcuts\n#Color: Red, #Icon: shortcuts\nurlContents(url: \"${Ask}\") >> ContentsOfWebPage\ncreateNote(text: \"${ContentsOfWebPage}\")\nexit()"
+    },
+    {
+        "instruction": "Select a file, rename it, create an archive, and save the archive",
+        "input": "",
+        "output": "import Shortcuts\n#Color: navy, #Icon: syringe\nselectFile() >> selectedFile\naskForInput(prompt: \"Name of the file\", type: Text) >> ProvidedInput\nrenameFile(file: selectedFile, name: \"${ProvidedInput}\") >> renamedFile\nmakeArchive(input: renamedFile, type: Ask) >> Archive\nsaveFile(input: Archive, ask: true)"
+    },
+    {
+        "instruction": "Select a file, rename it, create a ZIP archive, and save the archive",
+        "input": "",
+        "output": "import Shortcuts\n#Color: navy, #Icon: syringe\nselectFile() >> selectedFile\naskForInput(prompt: \"Name of the file\", type: Text) >> ProvidedInput\nrenameFile(file: selectedFile, name: \"${ProvidedInput}\") >> renamedFile\nmakeArchive(input: renamedFile, type: .zip) >> Archive\nsaveFile(input: Archive, ask: true)"
+    },
+    {
+        "instruction": "twitter video downloader",
+        "input": "",
+        "output": "import Shortcuts\n#Color: navy, #Icon: downloadArrow\nif (ShortcutInput == nil) {\n    askForInput(prompt: \"Enter Tweet URL:\", type: URL) >> ProvidedInput\n    var tweetUrl = ProvidedInput\n} else {\n    var tweetUrl = ShortcutInput\n}\nif (tweetUrl.contains \"twitter.com\") {\n    replaceText(input: \"${tweetUrl}\", find: \"twitter.com\", replace: \"twittervid.com\") >> UpdatedText\n    openURL(url: UpdatedText)\n} else {\n    exit()\n}"
+    },
+    {
+        "instruction": "Select a mood from Happy, Sad, or Mad, then ask for the reason behind the mood, and create a note with the mood and reason",
+        "input": "",
+        "output": "import Shortcuts\n#Color: grayBlue, #Icon: filmstrip\nmenu(How are you feeling?, [Happy, Sad, Mad]) {\ncase(\"Happy\"):\n    text(text: \"Happy\") >> Text\n    var Mood = Text\ncase(\"Sad\"):\n    text(text: \"Sad\") >> Text1\n    var Mood = Text1\ncase(\"Mad\"):\n    text(text: \"Mad\") >> Text2\n    var Mood = Text2\n}\naskForInput(prompt: \"Why do you feel ${Mood}?\") >> Reason\nvar record = \"\"\"${CurrentDate}-Mood\nMood: ${Mood}\nWhy ${Mood}: ${Reason}\"\"\"\ntext(\"${record}\") >> Text4\nalert(alert: \"${Text4}\")\ncreateNote(text: \"${Text4}\")"
+    },
+    {
+        "instruction": "extract text to image",
+        "input": "",
+        "output": "import Shortcuts\n#Color: Red, #Icon: shortcuts\nif (ShortcutInput != nil) {\n    extractTextFromImage(image: ShortcutInput) >> TextFromImage\n} else {\n    selectPhoto(multiple: true) >> Photo\n}\ncreateNote(text: \"${TextFromImage}\")"
+    },
+    {
+        "instruction": "Calculate the average of the numbers and display the result.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: grape, #Icon: magicWandAlt\naskForInput(prompt: \"How many numbers?\", type: Number) >> ProvidedInput\nrepeat(ProvidedInput) {\n    askForInput(prompt: \"Enter a number\", type: Number)\n} >> RepeatResult\nstatistic(input: RepeatResult, operation: Average) >> Average\nshowResult(text: \"${Average}\")"
+    },
+    {
+        "instruction": "Generate a random password of a specified length and copy it to the clipboard",
+        "input": "",
+        "output": "import Shortcuts\n#Color: grayBlue, #Icon: unlockButton\nlist(items: [\"4\",\"5\",\"6\",\"7\",\"8\",\"9\",\"10\",\"11\"]) >> List\nchoose(list: List) >> ChosenItem\nNumber(value: ChosenItem) >> number\nrepeat(number) {\n    randomNumber(min: 0, max: 9) >> Number\n    var password += Number\n} >> RepeatResult\n    text(text: \"${password}\") >> Text\n    setClipboard(variable: Text)\n    showResult(text: \"${Text}\")\n}"
+    },
+    {
+        "instruction": "Create a menu to handle different file types: Photo or Barcode/QR Code. For Photo, provide options to save to iCloud, create a note, or share. For Barcode/QR Code, provide options to save to iCloud, create a note, or share.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: navy, #Icon: clipboard\nmenu(File Type, [Photo, Barcode/QR Code]) {\ncase(\"Photo\"):\n    takePhoto() >> Photo\n    menu(, [iCloud, Note, Share]) {\n        case(\"iCloud\"):\n            saveFile(input: Photo)\n        case(\"Note\"):\n            createNote(text: \"${Photo}\")\n        case(\"Share\"):\n            share(file: Photo)\n    }\ncase(\"Barcode/QR Code\"):\n    scanQR() >> scanResult\n    menu(Save Location, [iCloud, Notes, Share]) {\n        case(\"iCloud\"):\n            saveFile(input: scanResult)\n        case(\"Notes\"):\n            createNote(text: \"${scanResult}\")\n        case(\"Share\"):\n            share(file: scanResult)\n    }\n}"
+    },
+    {
+        "instruction": "Ask for a data value and then provide options to encode or decode it using Base64 coding.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: grayGreen, #Icon: database\naskForInput(prompt: \"Data Value\", type: Text) >> ProvidedInput\nmenu(Base64 Coding, [Encode, Decode]) {\ncase(\"Encode\"):\n    encode(input: ProvidedInput) >> Encoded\n    setClipboard(variable: Encoded)\n    quicklook(input: Encoded)\ncase(\"Decode\"):\n    encode(input: ProvidedInput) >> Decoded\n    setClipboard(variable: Decoded)\n    quicklook(input: Decoded)\n}"
+    },
+    {
+        "instruction": "This shortcut shows you what’s on your clipboard via notification, and then clears your clipboard",
+        "input": "",
+        "output": "import Shortcuts\n#Color: teal, #Icon: walletPass\ngetClipboard() >> Clipboard\nif(Clipboard != nil) {\n    wait(seconds: 5)\n    text(text: \"${Clipboard}\") >> Text\n    sendNotification(body: \"${Text}\")\n    wait(seconds: 1)\n    nothing()\n    setClipboard()\n    wait(seconds: 5)\n    sendNotification(body: \"Clipboard's clean as a whistle!\")\n} else {\n    wait(seconds: 5)\n    sendNotification(body: \"Your clipboard has already been cleaned! Go copy some stuff!\", attachment: Clipboard)\n}"
+    },
+    {
+        "instruction": "throw a die",
+        "input": "",
+        "output": "import Shortcuts\n#Color: grape, #Icon: gameController\nmenu(Throw a die, [Throw 1 dice, Throw 2 dices, Throw 3 dices, Throw 4 dices, Exit]) {\ncase(\"Throw 1 dice\"):\n    randomNumber(min: 1, max: 6) >> Result\n    showResult(text: \"${Result}\")\ncase(\"Throw 2 dices\"):\n    randomNumber(min: 2, max: 12) >> Result\n    showResult(text: \"${Result}\")\ncase(\"Throw 3 dices\"):\n    randomNumber(min: 3, max: 18) >> Result\n    showResult(text: \"${Result}\")\ncase(\"Throw 4 dices\"):\n    randomNumber(min: 4, max: 24) >> Result\n    showResult(text: \"${Result}\")\ncase(\"Exit\"):\n}"
+    },
+    {
+        "instruction": "Retrieve various details about the device and create a note and send a notification with this information.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: grape, #Icon: pencil\ndeviceDetails(detail: Device Model) >> deviceDetails\nsendNotification(body: \"Creating information to your device...\")\ndeviceDetails(detail: Device Name) >> DeviceName\ndeviceDetails(detail: Device Model) >> DeviceModel\ndeviceDetails(detail: System Version) >> SystemVersion\ndeviceDetails(detail: Screen Width) >> ScreenWidth\ndeviceDetails(detail: Screen Height) >> ScreenHeight\ndeviceDetails(detail: Current Volume) >> CurrentVolume\ndeviceDetails(detail: Current Brightness) >> CurrentBrightness\nvar DeviceInfo = \"\"\"My Device\nDevice Name: ${DeviceName}\nDevice Model: ${DeviceModel}\nSystem Version: ${SystemVersion}\nScreen Width: ${ScreenWidth}\nScreen Height: ${ScreenHeight}\nCurrent Brightness: ${CurrentBrightness}\nCurrent Volume: ${CurrentVolume}\n\"\"\"\ntext(\"${DeviceInfo}\")>>Text\ncreateNote(text: \"${Text}\") >> Note\nsendNotification(body: \"Creating information your Device in notes Completed!\", attachment: Note)"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Adjust settings based on battery level and display status information",
+        "input": "",
+        "output": "import Shortcuts\n#Color: green, #Icon: battery\nbatteryLevel() >> BatteryLevel\nif (BatteryLevel.as(Number) < 20) {\n    setBrightness(value: 0.1)\n    setWiFi(state: false)\n    setCellular(state: false)\n    lowPowerMode(state: true)\n    alert(alert: \"Battery is low, switching to low power mode.\", title: \"Battery Alert\", cancel: false)\n} else if (BatteryLevel.as(Number) < 50) {\n    setBrightness(value: 0.3)\n    alert(alert: \"Battery is under 50%, reducing brightness.\", title: \"Battery Alert\", cancel: false)\n} else {\n    alert(alert: \"Battery level is good.\", title: \"Battery Status\", cancel: false)\n}"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Set reminders based on the day of the week",
+        "input": "",
+        "output": "import Shortcuts\n#Color: teal, #Icon: calendar\nformatDate(date: \"${CurrentDate}\", dStyle: RFC 2822) >> DayOfWeek\nif (DayOfWeek.contains('Sat') || DayOfWeek.contains('Sun')) {\n    alert(alert: \"Enjoy your weekend!\", title: \"Weekend Reminder\", cancel: false)\n} else {\n    alert(alert: \"Prepare for the workweek!\", title: \"Weekday Reminder\", cancel: false)\n}"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Morning Routine with Music and Weather",
+        "input": "",
+        "output": "import Shortcuts\nsetVolume(level: 0.5)\ngetPlaylist(name: \"Morning Coffee\") >> PlayList\nplayMusic(music: PlayList)\ngetCurrentConditions() >> Weather\nalert(alert: \"Weather today: ${Weather}\", title: \"Good Morning\", cancel: false)\nopenURL(url: \"https://news.google.com/topstories\")\nsetBrightness(value: 0.8)"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Display Upcoming Reminders",
+        "input": "",
+        "output": "import Shortcuts\n#Color: Red, #Icon: globe\nfilterReminders() >> Reminders\ngetUpcomingReminders(count: 5, list: Reminders)"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Remove Filtered Reminders",
+        "input": "",
+        "output": "import Shortcuts\n#Color: Red, #Icon: globe\nfilterReminders() >> myReminders\nremoveReminders(reminders: myReminders)"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Get Flagged Reminder Details",
+        "input": "",
+        "output": "import Shortcuts\n#Color: Red, #Icon: globe\nfilterReminders() >> reminders\nreminderDetail(detail: Is Flagged, reminder: reminders)"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Get URL Components from Clipboard",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: globe\ngetClipboard() >> Clipboard\nurlComponent(url: Clipboard, component: Scheme)\nurlComponent(url: Clipboard, component: Host)\nurlComponent(url: Clipboard, component: Path)\nurlComponent(url: Clipboard, component: Query)"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Get URL Headers from Clipboard",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: globe\ngetClipboard() >> Clipboard\ngetHeaders(url: Clipboard) >> Headers\nquicklook(input: Headers)\nsetClipboard(variable: Headers)"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Get URLs from User Input",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: globe\naskForInput(prompt: \"What is your input?\", type: Text) >> ProvidedInput\ngetURLSFromInput(text: ProvidedInput)"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Show All Alarms",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: alarmclock\ngetallalarms(show: true)"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Add New Calendar",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: calendar\naskForInput(prompt: \"What is the name of the calendar?\", type: Text) >> CalendarName\naddNewCalendar(name: \"${CalendarName}\")"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Math Calculator with Save Option",
+        "input": "",
+        "output": "import Shortcuts\n#Color: yellow, #Icon: circledPi\nmath(input: Ask, operation: Ask, operand: Ask) >> CalculationResult\nshowResult(text: \"${CalculationResult}\")\nmenu(Save Calculation?, [Yes, No]) {\ncase(\"Yes\"):\n    saveToCameraRoll(image: CalculationResult, album: Ask) >> saveToCameraRoll\n    menu(Open Photos?, [Yes, No]) {\n        case(\"Yes\"):\n            openApp(id: \"com.apple.mobileslideshow\")\n        case(\"No\"):\n            runShortcut(name: \"Maths Calculator\", input: CalculationResult)\n    }\ncase(\"No\"):\n    runShortcut(name: \"Maths Calculator\", input: CalculationResult)\n}"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Add Frame to GIF",
+        "input": "",
+        "output": "import Shortcuts\n#Color: grape, #Icon: pencil\nselectPhoto(multiple: false) >> Photo\nselectPhoto(multiple: false) >> GIF\naddFrameToGIF(photo: Photo, gif: GIF, delay: 0.25, autoSize: true) >> NEW\nsaveToCameraRoll(image: NEW)"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Add a Song to Up Next",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: musicnote\nselectSong(multiple: false) >> SelectedSong\naddUpNext(music: SelectedSong, place: Next)"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Add a Song to Up Later",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: musicnote\nselectSong(multiple: false) >> SelectedSong\naddUpNext(music: SelectedSong, place: Later)"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Add Songs to Up Next",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: musicnote\nselectSong(multiple: true) >> SelectedSong\naddUpNext(music: SelectedSong, place: Next)"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Add Songs to Up Later",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: musicnote\nselectSong(multiple: true) >> SelectedSong\naddUpNext(music: SelectedSong, place: Later)"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Set Timer for 10 minutes",
+        "input": "",
+        "output": "import Shortcuts\n#Color: grayblue, #Icon: stopwatch\ntimer(duration: 10 min)"
+    },
+    {
+        "instruction": "Create an iOS shortcut: 8-Minute Shower Timer",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: shower\ngetPlaylist(name: \"Taking a Shower\") >> Playlist\nplayMusic(music: Playlist, shuffle: Songs, repeat: None)\nwait(seconds: 480)\nplay()\nexit()"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Second Timer",
+        "input": "",
+        "output": "import Shortcuts\n#Color: Red, #Icon: speedometer\naskForInput(prompt: \"How many minutes would you like?\", type: Number, allowDecimal: false, allowNegative: false) >> ProvidedInput\nmath(input: ProvidedInput, operation: *, operand: \"60\") >> CalculationResult\naskForInput(prompt: \"What is this timer for?\", type: Text) >> ProvidedInput1\nwait(seconds: CalculationResult)\nvibrate()\nvibrate()\nvibrate()\nvibrate()\nalert(alert: \"Timer Finished\", title: \"${ProvidedInput1}\", cancel: false)"
+    },    
+    {
+        "instruction": "Create an iOS shortcut: Create QR Code for YouTube link",
+        "input": "",
+        "output": "import Shortcuts\n#Color: orange, #Icon: qrcode\ncreateQR(text: \"https://www.youtube.com/watch?v=dQw4w9WgXcQ\", correction: Medium)"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Create Album and Add Multiple Photos",
+        "input": "",
+        "output": "import Shortcuts\n#Color: yellow, #Icon: photostack\nselectPhoto(multiple: true) >> Photos\ncreateAlbum(photos: Photos, name: \"New Album\")"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Create Album 'Copy' and Add Clipboard Photo",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: photostack\ngetClipboard() >> Clipboard\ncreateAlbum(photos: Clipboard, name: \"Copy\")"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Add a Song to Playlist ",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: musicnote\nselectSong(multiple: false) >> SelectedSong\naddToPlaylist(music: SelectedSong, playlist: \"My Music Library\")"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Add Songs to Playlist",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: musicnote\nselectSong(multiple: true) >> SelectedSong\naddToPlaylist(music: SelectedSong, playlist: \"My Music Library\")"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Add URLs to Reading List",
+        "input": "",
+        "output": "import Shortcuts\n#Color: grayBlue, #Icon: openbook\nlist(items:[\"https://jellycuts.com\",\"https://github.com/\",\"https://www.google.com/\",\"https://baidu.com\"]) >> List\naddToReadingList(urls: List)"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Append New Line to File",
+        "input": "",
+        "output": "import Shortcuts\n#Color: grayBlue, #Icon: folder\nappendFile(input: \"This is a new line \", path: \"Test/Text.txt\", newLine: true)"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Calculate Total Amount with Taxes",
+        "input": "",
+        "output": "import Shortcuts\n#Color: navy, #Icon: dollarSign\naskForInput(prompt: \"Subtotal\", type: Number) >> BillAmount\nmenu(Tax, [14.975%, 19%]) \n{\ncase(\"14.975%\"):\n\tnumber(value: 0.14975) >> PercentTipping\n\tmath(input: BillAmount, operation: *, operand: PercentTipping) >> CalculationResult\n\tformatNumber(number: CalculationResult, places: 2) >> TipAmount\n\tmath(input: TipAmount, operation: +, operand: BillAmount) >> CalculationResult1\n\tformatNumber(number: CalculationResult1, places: 2) >> TotalPrice\n\talert(alert: \"The amount with taxes is ${TotalPrice}$\", title: \"\", cancel: false)\n\ncase(\"19%\"):\n\tnumber(value: 0.19) >> PercentTipping1\n\tmath(input: BillAmount, operation: *, operand: PercentTipping1) >> CalculationResult2\n\tformatNumber(number: CalculationResult2, places: 2) >> TipAmount1\n\tmath(input: TipAmount, operation: +, operand: BillAmount) >> CalculationResult3\n\tformatNumber(number: CalculationResult3, places: 2) >> TotalPrice1\n\talert(alert: \"The amount with taxes is ${TotalPrice1}$\", title: \"\", cancel: false)\n}"
+    },
+    {
+        "instruction": "Adjust device settings for work or home based on location and display appropriate notifications",
+        "input": "",
+        "output": "import Shortcuts\n#Color: teal, #Icon: globe\ngetLocation() >> currentLocation\nlocationDetail(detail: Latitude, location: currentLocation) >> Latitude\nlocationDetail(detail: Longitude, location: currentLocation) >> Longitude\nround(number: Latitude, roundTo: Tenths) >> Latitude1\nround(number: Longitude, roundTo: Tenths) >> Longitude1\nif (Latitude1.as(Number) != 32.1) {\n\tsetWiFi(state: false)\n\tsetBluetooth(value: true)\n\tsendNotification(body: \"Settings adjusted for work.\", title: \"Location Based Setting\")\n} else {\n\tif (Longitude1.as(Number) == 118.9) {\n\t\tsetWiFi(state: true)\n\t\tsetBluetooth(value: false)\n\t\tsendNotification(body: \"Settings adjusted for home.\", title: \"Location Based Setting\")\n\t} else {\n\t\t// Handle other cases\n\t}\n}"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Advanced Wi-Fi Management",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: wifi\nwifiDetails() >> wifiName\nif(wifiName == nil) {\n    alert(alert: 'No Wi-Fi connection detected. Please connect to a Wi-Fi network.', title: 'Check Wi-Fi', cancel: false)\n}\nopenURL(url: 'https://www.google.com') >> testConnection\nif(testConnection == nil) {\n    alert(alert: 'Internet connection failed. Please check your router or try a different network.', title: 'Connection Test', cancel: false)\n}\nsetWiFi(state: false)\nwait(seconds: 5)\nsetWiFi(state: true)\nalert(alert: 'Wi-Fi reset complete.', title: 'Wi-Fi Manager', cancel: false)"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Calorie Count Calculator",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: apple\naskForInput(prompt: \"Enter the number of items in your meal:\", type: Number) >> itemCount\nrepeat(itemCount) {\n    askForInput(prompt: \"Enter calories for item ${Repeat Index}\", type: Number) >> itemCalories\n} >> RepeatResults\nstatistic(input: RepeatResults, operation: Sum) >> TotalCalories\nalert(alert: \"Total calories in your meal: ${TotalCalories}\", title: \"Calorie Count\", cancel: false)"
+    },
+    {
+        "instruction": "Combine selected photos vertically and save or share the combined photo",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: camera\nselectPhoto(multiple: true) >> selectedPhotos\ncombineImage(images: selectedPhotos, mode: Vertically, spacing: 10) >> combinedPhoto\nmenu(prompt: \"What do you want to do with this combined photo?\", options: [\"Save\", \"Share\"]) {\n    case (\"Save\"):\n        saveToCameraRoll(image: combinedPhoto)\n        showResult(text: \"Combined photo saved to camera roll.\")\n    case (\"Share\"):\n        share(file: combinedPhoto)\n}"
+    },
+    {
+        "instruction": "Combine selected photos horizontally and save or share the combined photo",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: camera\nselectPhoto(multiple: true) >> selectedPhotos\ncombineImage(images: selectedPhotos, mode: Horizontally, spacing: 10) >> combinedPhoto\nmenu(prompt: \"What do you want to do with this combined photo?\", options: [\"Save\", \"Share\"]) {\n    case (\"Save\"):\n        saveToCameraRoll(image: combinedPhoto)\n        showResult(text: \"Combined photo saved to camera roll.\")\n    case (\"Share\"):\n        share(file: combinedPhoto)\n}"
+    },
+    {
+        "instruction": "Combine selected photos in a grid and save or share the combined photo",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: camera\nselectPhoto(multiple: true) >> selectedPhotos\ncombineImage(images: selectedPhotos, mode: In a Grid, spacing: 10) >> combinedPhoto\nmenu(prompt: \"What do you want to do with this combined photo?\", options: [\"Save\", \"Share\"]) {\n    case (\"Save\"):\n        saveToCameraRoll(image: combinedPhoto)\n        showResult(text: \"Combined photo saved to camera roll.\")\n    case (\"Share\"):\n        share(file: combinedPhoto)\n}"
+    },
+    {
+        "instruction": "View the last screenshot and choose to delete or share it",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: photostack\ngetLastScreenshot() >> lastScreenshot\nquicklook(input: lastScreenshot)\nmenu(prompt: \"What do you want to do with this screenshot?\", options: [\"Delete\", \"Share\"]) {\n    case (\"Delete\"):\n        deletePhotos(photos: lastScreenshot)\n        showResult(text: \"Screenshot deleted.\")\n    case (\"Share\"):\n        share(file: lastScreenshot)\n}"
+    },
+    {
+        "instruction": "Calculate the standard deviation of a set of numbers",
+        "input": "",
+        "output": "import Shortcuts\n#Color: navy, #Icon: math\naskForInput(prompt: \"How many numbers?\", type: Number) >> ProvidedInput\nrepeat(ProvidedInput) {    askForInput(prompt: \"Enter a number\", type: Number)\n} >> RepeatResult\nstatistic(input: RepeatResult, operation: Standard Deviation) >> StandardDeviation\nshowResult(text: \"${StandardDeviation}\")"
+    },
+    {
+        "instruction": "Calculate the median of a set of numbers",
+        "input": "",
+        "output": "import Shortcuts\n#Color: navy, #Icon: math\naskForInput(prompt: \"How many numbers?\", type: Number) >> ProvidedInput\nrepeat(ProvidedInput) {    askForInput(prompt: \"Enter a number\", type: Number)\n} >> RepeatResult\nstatistic(input: RepeatResult, operation: Median) >> Result\nshowResult(text: \"${Result}\")"
+    },
+    {
+        "instruction": "Calculate the mode of a set of numbers",
+        "input": "",
+        "output": "import Shortcuts\n#Color: navy, #Icon: math\naskForInput(prompt: \"How many numbers?\", type: Number) >> ProvidedInput\nrepeat(ProvidedInput) {    askForInput(prompt: \"Enter a number\", type: Number)\n} >> RepeatResult\nstatistic(input: RepeatResult, operation: Mode) >> Result\nshowResult(text: \"${Result}\")"
+    },
+    {
+        "instruction": "Calculate the range of a set of numbers",
+        "input": "",
+        "output": "import Shortcuts\n#Color: navy, #Icon: math\naskForInput(prompt: \"How many numbers?\", type: Number) >> ProvidedInput\nrepeat(ProvidedInput) {    askForInput(prompt: \"Enter a number\", type: Number)\n} >> RepeatResult\nstatistic(input: RepeatResult, operation: Range) >> Result\nshowResult(text: \"${Result}\")"
+    },
+    {
+        "instruction": "Calculate the minimum of a set of numbers",
+        "input": "",
+        "output": "import Shortcuts\n#Color: navy, #Icon: math\naskForInput(prompt: \"How many numbers?\", type: Number) >> ProvidedInput\nrepeat(ProvidedInput) {    askForInput(prompt: \"Enter a number\", type: Number)\n} >> RepeatResult\nstatistic(input: RepeatResult, operation: Minimum) >> Result\nshowResult(text: \"${Result}\")"
+    },
+    {
+        "instruction": "Calculate the maxmum of a set of numbers",
+        "input": "",
+        "output": "import Shortcuts\n#Color: navy, #Icon: math\naskForInput(prompt: \"How many numbers?\", type: Number) >> ProvidedInput\nrepeat(ProvidedInput) {    askForInput(prompt: \"Enter a number\", type: Number)\n} >> RepeatResult\nstatistic(input: RepeatResult, operation: Maxmum) >> Result\nshowResult(text: \"${Result}\")"
+    },
+    {
+        "instruction": "Calculate the sum of a set of numbers",
+        "input": "",
+        "output": "import Shortcuts\n#Color: navy, #Icon: math\naskForInput(prompt: \"How many numbers?\", type: Number) >> ProvidedInput\nrepeat(ProvidedInput) {    askForInput(prompt: \"Enter a number\", type: Number)\n} >> RepeatResult\nstatistic(input: RepeatResult, operation: Sum) >> Result\nshowResult(text: \"${Result}\")"
+    },
+    {
+        "instruction": "Calculate the average of a set of numbers",
+        "input": "",
+        "output": "import Shortcuts\n#Color: navy, #Icon: math\naskForInput(prompt: \"How many numbers?\", type: Number) >> ProvidedInput\nrepeat(ProvidedInput) {    askForInput(prompt: \"Enter a number\", type: Number)\n} >> RepeatResult\nstatistic(input: RepeatResult, operation: Average) >> Result\nshowResult(text: \"${Result}\")"
+    },
+    {
+        "instruction": "Convert a selected photo to JPEG format with metadata and share it",
+        "input": "",
+        "output": "import Shortcuts\n#Color: navy, #Icon: camera\nselectPhoto(multiple: false) >> Photo\nconvertImage(image: Photo, format: JPEG, metadata: true, quality: 0.5) >> ConvertedImage\nshare(file: ConvertedImage)"
+    },
+    {
+        "instruction": "Convert a selected photo to PNG format with metadata and share it",
+        "input": "",
+        "output": "import Shortcuts\n#Color: navy, #Icon: camera\nselectPhoto(multiple: false) >> Photo\nconvertImage(image: Photo, format: PNG, metadata: true, quality: 0.5) >> ConvertedImage\nshare(file: ConvertedImage)"
+    },
+    {
+        "instruction": "Convert a selected photo to TIFF format with metadata and share it",
+        "input": "",
+        "output": "import Shortcuts\n#Color: navy, #Icon: camera\nselectPhoto(multiple: false) >> Photo\nconvertImage(image: Photo, format: TIFF, metadata: true, quality: 0.5) >> ConvertedImage\nshare(file: ConvertedImage)"
+    },
+    {
+        "instruction": "Convert a selected photo to GIF format with metadata and share it",
+        "input": "",
+        "output": "import Shortcuts\n#Color: navy, #Icon: camera\nselectPhoto(multiple: false) >> Photo\nconvertImage(image: Photo, format: GIF, metadata: true, quality: 0.5) >> ConvertedImage\nshare(file: ConvertedImage)"
+    },
+    {
+        "instruction": "Convert a selected photo to BMP format with metadata and share it",
+        "input": "",
+        "output": "import Shortcuts\n#Color: navy, #Icon: camera\nselectPhoto(multiple: false) >> Photo\nconvertImage(image: Photo, format: BMP, metadata: true, quality: 0.5) >> ConvertedImage\nshare(file: ConvertedImage)"
+    },
+    {
+        "instruction": "Convert a selected photo to PDF format with metadata and share it",
+        "input": "",
+        "output": "import Shortcuts\n#Color: navy, #Icon: camera\nselectPhoto(multiple: false) >> Photo\nconvertImage(image: Photo, format: PDF, metadata: true, quality: 0.5) >> ConvertedImage\nshare(file: ConvertedImage)"
+    },
+    {
+        "instruction": "Convert a selected photo to HEIF format with metadata and share it",
+        "input": "",
+        "output": "import Shortcuts\n#Color: navy, #Icon: camera\nselectPhoto(multiple: false) >> Photo\nconvertImage(image: Photo, format: HEIF, metadata: true, quality: 0.5) >> ConvertedImage\nshare(file: ConvertedImage)"
+    },
+    {
+        "instruction": "Convert a selected photo to a specified format with metadata and share it",
+        "input": "",
+        "output": "import Shortcuts\n#Color: navy, #Icon: camera\nselectPhoto(multiple: false) >> Photo\naskForInput(prompt: \"Enter the desired image format\", type: Text) >> ImageFormat\nconvertImage(image: Photo, format: ImageFormat, metadata: true, quality: 0.5) >> ConvertedImage\nshare(file: ConvertedImage)"
+    },
+    {
+        "instruction": "Convert an image from the clipboard to a specified format with metadata and share it",
+        "input": "",
+        "output": "import Shortcuts\n#Color: navy, #Icon: camera\ngetClipboard() >> Clipboard\naskForInput(prompt: \"Enter the desired image format\", type: Text) >> ImageFormat\nconvertImage(image: Clipboard, format: ImageFormat, metadata: true, quality: 0.5) >> ConvertedImage\nshare(file: ConvertedImage)"
+    },
+    {
+        "instruction": "Flip the selected photo horizontally using the flipImage function and display the result in quick look.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: navy, #Icon: calculator\nselectPhoto(multiple: false) >> Photo\nflipImage(image: Photo, mode: Horizontal) >> FlippedImage\nquicklook(input: FlippedImage)"
+    },
+    {
+        "instruction": "Flip the selected photo vertically using the flipImage function and display the result in quick look.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: navy, #Icon: camera\nselectPhoto(multiple: false) >> Photo\nflipImage(image: Photo, mode: Vertical) >> FlippedImage\nquicklook(input: FlippedImage)"
+    },
+    {
+        "instruction": "Get the current song's genre and add it to a playlist if it belongs to 'Pop'",
+        "input": "",
+        "output": "import Shortcuts\n#Color: navy, #Icon: musicnote\ngetCurrentSong() >> CurrentSong\nmusicDetail(detail: Genre, music: CurrentSong) >> Genre\nif(Genre.contains(\"Pop\")) {\n    addToPlaylist(music: CurrentSong, playlist: \"Pop\") >> addToPlaylist\n} else {\n    // Handle the case if the song does not belong to 'Pop'\n} >> IFResult"
+    },
+    {
+        "instruction": "Get the current song's artist and display an alert with the artist's name",
+        "input": "",
+        "output": "import Shortcuts\n#Color: navy, #Icon: musicnote\ngetCurrentSong() >> CurrentSong\nmusicDetail(detail: Artist, music: CurrentSong) >> Artist\nalert(alert: \"${Artist}\", title: \"The song's artist is\")"
+    },
+    {
+        "instruction": "Get details of the current song (artist, title, album), create a text with the information, and copy it to the clipboard",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: musicnote\ngetCurrentSong() >> CurrentSong\nmusicDetail(detail: Artist, music: CurrentSong) >> Artist\nmusicDetail(detail: Title, music: CurrentSong) >> Title\nmusicDetail(detail: Album, music: CurrentSong) >> Album\ntext(text: \"This song's artist is ${Artist}, title is ${Title} and it's from ${Album}\") >> Text\nsetClipboard(variable: Text)"
+    },
+    {
+        "instruction": "Get the current song's composer and create a note with this information",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: musicnote\ngetCurrentSong() >> CurrentSong\nmusicDetail(detail: Composer, music: CurrentSong) >> Composer\ntext(text: \"This song's composer is ${Composer}\") >> Text\ncreateNote(text: Text)"
+    },
+    {
+        "instruction": "Select a contact and check if the provided first name matches, then get details (last name, company, email) and create a text with the information, and copy it to the clipboard",
+        "input": "",
+        "output": "import Shortcuts\n#Color: green, #Icon: person\nselectContact(multiple: false) >> selectedContact\naskForInput(prompt: \"\", type: Text) >> ProvidedInput\ncontactDetail(detail: First Name, contact: selectedContact) >> FirstName\nif(FirstName.as(Text) == ProvidedInput) {\n    contactDetail(detail: Last Name, contact: selectedContact) >> LastName\n    contactDetail(detail: Company, contact: selectedContact) >> Company\n    contactDetail(detail: Email Address, contact: selectedContact) >> EmailAddress\n    text(text: \"${ProvidedInput} {LastName}'s company is ${Company}, email address is ${EmailAddress}\") >> Text\n    setClipboard(variable: Text)\n}"
+    },
+    {
+        "instruction": "Select a photo, extract text from the image, and copy the extracted text to the clipboard",
+        "input": "",
+        "output": "import Shortcuts\n#Color: purple, #Icon: photostackalt\nselectPhoto(multiple: false) >> Photo\nextractTextFromImage(image: Photo) >> Text\nsetClipboard(variable: Text)"
+    },
+    {
+        "instruction": "Ask for input and convert the input text to uppercase",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: noteTextPlus\naskForInput(prompt: \"\", type: Text) >> ProvidedInput\nchangeCase(text: ProvidedInput, case: uppercase)"
+    },
+    {
+        "instruction": "Ask for input and convert the input text to lowercase",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: noteTextPlus\naskForInput(prompt: \"\", type: Text) >> ProvidedInput\nchangeCase(text: ProvidedInput, case: lowercase)"
+    },
+    {
+        "instruction": "Get text from the clipboard, convert it to uppercase, and copy the changed text back to the clipboard",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: noteTextPlus\ngetClipboard() >> Clipboard\nchangeCase(text: \"${Clipboard}\", case: uppercase) >> ChangedCase\nsetClipboard(variable: ChangedCase)"
+    },
+    {
+        "instruction": "Convert text from the clipboard to title case",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: noteTextPlus\ngetClipboard() >> Clipboard\nchangeCase(text: \"${Clipboard}\", case: title case) >> ChangedCase\nsetClipboard(variable: ChangedCase)"
+    },
+    {
+        "instruction": "Convert text from the clipboard to sentence case",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: noteTextPlus\ngetClipboard() >> Clipboard\nchangeCase(text: \"${Clipboard}\", case: sentence case) >> ChangedCase\nsetClipboard(variable: ChangedCase)"
+    },
+    {
+        "instruction": "Convert text from the clipboard to SpongeBob case",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: noteTextPlus\ngetClipboard() >> Clipboard\nchangeCase(text: \"${Clipboard}\", case: spongebob) >> ChangedCase\nsetClipboard(variable: ChangedCase)"
+    },    
+    {
+        "instruction": "Convert text from the clipboard to alternating case",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: noteTextPlus\ngetClipboard() >> Clipboard\nchangeCase(text: \"${Clipboard}\", case: alternating) >> ChangedCase\nsetClipboard(variable: ChangedCase)"
+    },
+    {
+        "instruction": "Check if the text in the clipboard begins with 'AAA', then convert it to uppercase; otherwise, convert it to lowercase",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: noteTextPlus\ngetClipboard() >> Clipboard\nif (Clipboard.as(Text).beginsWith(\"AAA\")) {\n    changeCase(text: \"${Clipboard}\", case: uppercase) >> ChangedCase\n    setClipboard(variable: ChangedCase)\n} else {\n    changeCase(text: \"${Clipboard}\", case: lowercase) >> ChangedCase1\n    setClipboard(variable: ChangedCase1)\n}"
+    },
+    {
+        "instruction": "Check if the text in the clipboard ends with 'BBB', then convert it to title case; otherwise, convert it to sentence case",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: noteTextPlus\ngetClipboard() >> Clipboard\nif (Clipboard.as(Text).endsWith(\"BBB\")) {\n    changeCase(text: \"${Clipboard}\", case: title case) >> ChangedCase\n    setClipboard(variable: ChangedCase)\n} else {\n    changeCase(text: \"${Clipboard}\", case: sentence case) >> ChangedCase1\n    setClipboard(variable: ChangedCase1)\n}"
+    },
+    {
+        "instruction": "Log workout sessions for cycling and running",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: man\nlogWorkout(type: Cycling, date: April 1st 2024, duration: 10 Minutes, calories: 214 cal, distance: 1 mi)\nlogWorkout(type: Running, date: April 2nd 2024, duration: 25 Minutes, calories: 300 cal, distance: 5 mi)"
+    },    
+    {
+        "instruction": "Log a workout session for American Football",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: man\nlogWorkout(type: American Football, date: April 3rd 2024, duration: 45 Minutes, calories: 500 cal, distance: 2 mi)"
+    },    
+    {
+        "instruction": "Log a workout session for Basketball",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: man\nlogWorkout(type: Basketball, date: April 4th 2024, duration: 30 Minutes, calories: 350 cal, distance: 1.5 mi)"
+    },
+    {
+        "instruction": "Log a workout session for Boxing",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: man\nlogWorkout(type: Boxing, date: April 5th 2024, duration: 60 Minutes, calories: 700 cal, distance: 3 mi)"
+    },
+    {
+        "instruction": "Log a workout session for Dance",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: man\nlogWorkout(type: Dance, date: April 6th 2024, duration: 40 Minutes, calories: 400 cal, distance: 1.8 mi)"
+    },
+    {
+        "instruction": "Start an outdoor walk workout with 200 calories goal, get the 'Pop Workout' playlist, and play music from the playlist with shuffle mode",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: man\nstartWorkout(workout: \"Outdoor Walk\", open: false, value: \"200\", unit: cal)\ngetPlaylist(name: \"Pop Workout\") >> Playlist\nplayMusic(music: Playlist, shuffle: Songs)"
+    },
+    {
+        "instruction": "Start an indoor running workout with 30 minutes duration goal",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: man\nstartWorkout(workout: \"Indoor Run\", open: false, value: \"30\", unit: min)"
+    },
+    {
+        "instruction": "Start a cycling workout with 15 kilometers distance goal",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: man\nstartWorkout(workout: \"Cycling\", open: false, value: \"15\", unit: km)"
+    },
+    {
+        "instruction": "Set voice data mode to 4G using the Primary SIM",
+        "input": "",
+        "output": "import Shortcuts\n#Color: navy, #Icon: network\nsetVoiceData(mode: 4G, sim: \"Primary\")"
+    },
+    {
+        "instruction": "Set voice data mode to LTE using the Travel SIM",
+        "input": "",
+        "output": "import Shortcuts\n#Color: navy, #Icon: network\nsetVoiceData(mode: LTE, sim: \"Travel\")"
+    },
+    {
+        "instruction": "Set voice data mode to 3G using the Primary SIM",
+        "input": "",
+        "output": "import Shortcuts\n#Color: navy, #Icon: network\nsetVoiceData(mode: 3G, sim: \"Primary\")"
+    },
+    {
+        "instruction": "Set voice data mode to 5G using the Travel SIM",
+        "input": "",
+        "output": "import Shortcuts\n#Color: navy, #Icon: network\nsetVoiceData(mode: 5G, sim: \"Travel\")"
+    },
+    {
+        "instruction": "Get the author details of a podcast episode and send a notification",
+        "input": "",
+        "output": "import Shortcuts\n#Color: pink, #Icon: microphone\ngetPodcasts() >> Podcasts\nchoose(list: Podcasts, prompt: \"\", multiple: false) >> ChosenItem\ngetPodcastEpisodes(input: ChosenItem) >> Episodes\nchoose(list: Episodes, prompt: \"\") >> ChosenItem1\npodcastEpisodeDetail(detail: Author, episode: ChosenItem1) >> podcastEpisodeAuthor\nsendNotification(body: \"The author is ${podcastEpisodeAuthor}\", title: \"Podcast Author\", attachment: Podcasts)"
+    },
+    {
+        "instruction": "Get the release date of a podcast episode",
+        "input": "",
+        "output": "import Shortcuts\n#Color: pink, #Icon: microphone\ngetPodcasts() >> Podcasts\nchoose(list: Podcasts, prompt: \"\", multiple: false) >> ChosenItem\ngetPodcastEpisodes(input: ChosenItem) >> Episodes\nchoose(list: Episodes, prompt: \"\") >> ChosenItem1\npodcastEpisodeDetail(detail: Release Date, episode: ChosenItem1) >> podcastReleaseDate"
+    },
+    {
+        "instruction": "Get the genres of a podcast episode and share it",
+        "input": "",
+        "output": "import Shortcuts\n#Color: pink, #Icon: microphone\ngetPodcasts() >> Podcasts\nchoose(list: Podcasts, prompt: \"\", multiple: false) >> ChosenItem\ngetPodcastEpisodes(input: ChosenItem) >> Episodes\nchoose(list: Episodes, prompt: \"\") >> ChosenItem1\npodcastEpisodeDetail(detail: Genres, episode: ChosenItem1) >> podcastGenres\nshare(text: \"This episode is in the genres: ${podcastGenres}\")"
+    },
+    {
+        "instruction": "Get the duration of a podcast episode",
+        "input": "",
+        "output": "import Shortcuts\n#Color: pink, #Icon: microphone\ngetPodcasts() >> Podcasts\nchoose(list: Podcasts, prompt: \"\", multiple: false) >> ChosenItem\ngetPodcastEpisodes(input: ChosenItem) >> Episodes\nchoose(list: Episodes, prompt: \"\") >> ChosenItem1\npodcastEpisodeDetail(detail: Duration, episode: ChosenItem1) >> podcastDuration"
+    },
+    {
+        "instruction": "Get the duration of a podcast episode and show an alert based on whether it's more or less than 30 minutes",
+        "input": "",
+        "output": "import Shortcuts\n#Color: pink, #Icon: microphone\ngetPodcasts() >> Podcasts\nchoose(list: Podcasts, multiple: false) >> ChosenItem\ngetPodcastEpisodes(input: ChosenItem) >> Episodes\nchoose(list: Episodes,) >> ChosenItem1\npodcastEpisodeDetail(detail: Duration, episode: ChosenItem1) >> podcastDuration\nif (podcastDuration.as(Number) > 30) {\n    alert(alert: \"The duration of this episode is more than 30 minutes\")\n} else {\n    alert(alert: \"The duration of this episode is less than 30 minutes\")\n}"
+    }, 
+    {
+        "instruction": "Take a video using the front camera with low quality",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: camera\ntakeVideo(camera: Front, quality: Low, start: Immediately)"
+    },
+    {
+        "instruction": "Take a video using the back camera with high quality, starting on tap",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: camera\ntakeVideo(camera: Back, quality: High, start: On tap)"
+    },
+    {
+        "instruction": "Take a video using the front camera with medium quality, starting immediately",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: camera\ntakeVideo(camera: Front, quality: Medium, start: Immediately)"
+    },
+    {
+        "instruction": "Take a video using the back camera with low quality, starting on tap",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: camera\ntakeVideo(camera: Back, quality: Low, start: On tap)"
+    },
+    {
+        "instruction": "Ask for the number of videos to get, get the last number of videos specified, and trim the video",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: videosymbol\naskForInput(prompt: \"How many videos do you want to get?\", type: Number)>>VideoNumber\ngetLastVideo(count: VideoNumber)>>Video\ntrimVideo(video: Video)"
+    },
+    {
+        "instruction": "Get the article from the specified URL",
+        "input": "",
+        "output": "import Shortcuts\n#Color: green, #Icon: globe\ngetArticle(url: \"https://jellycuts.com\")"
+    },
+    {
+        "instruction": "Ask for a URL input, get the article from the provided URL, and display article information in an alert",
+        "input": "",
+        "output": "import Shortcuts\n#Color: green, #Icon: globe\naskForInput(prompt: \"input your url\", type: URL)>>ProvidedInput\ngetArticle(url: ProvidedInput)>>Article\narticleDetail(detail: Title, article: Article)>>Title\narticleDetail(detail: Author, article: Article)>>Author\nalert(alert: \"Title is ${Title}, author is ${Author}\", title: \"article information\", cancel: true)"
+    },
+    {
+        "instruction": "Select a single photo, get its width and height details, and display the information in an alert",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: camera\nselectPhoto(multiple: false)>>Photo\nimageDetail(detail: Width, image: Photo)>>PhotoWidth\nimageDetail(detail: Height, image: Photo)>>PhotoHeight\nalert(alert: \"The width of the photo is ${PhotoWidth} and the height of the photo is ${PhotoHeight}\", title: \"Your image detail\")"
+    },
+    {
+        "instruction": "Create an iOS shortcut: File Organizer, allowing file selection and offering options to either delete or archive as .zip and save the files.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: folder\nselectFile(multiple: true) >> files\nmenu(What do you want to do with these files?, [Delete, Archive]) {\ncase(Delete):\n    deleteFile(input: files)\ncase(Archive):\n    makeArchive(input: files, type: .zip) >> archive\n    saveFile(input: archive, ask: true)\n}"
+    },
+    {
+        "instruction": "Create an iOS shortcut: File Organizer, allowing file selection and offering options to either delete or archive as .iso and save the files.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: folder\nselectFile(multiple: true) >> files\nmenu(What do you want to do with these files?, [Delete, Archive]) {\ncase(Delete):\n    deleteFile(input: files)\ncase(Archive):\n    makeArchive(input: files, type: .iso) >> archive\n    saveFile(input: archive, ask: true)\n}"
+    },
+    {
+        "instruction": "Create an iOS shortcut: File Organizer, allowing file selection and offering options to either delete or archive as .tar.gz and save the files.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: folder\nselectFile(multiple: true) >> files\nmenu(What do you want to do with these files?, [Delete, Archive]) {\ncase(Delete):\n    deleteFile(input: files)\ncase(Archive):\n    makeArchive(input: files, type: .tar.gz) >> archive\n    saveFile(input: archive, ask: true)\n}"
+    },
+    {
+        "instruction": "Create an iOS shortcut: File Organizer, allowing file selection and offering options to either delete or archive as .tar.bz2 and save the files.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: folder\nselectFile(multiple: true) >> files\nmenu(What do you want to do with these files?, [Delete, Archive]) {\ncase(Delete):\n    deleteFile(input: files)\ncase(Archive):\n    makeArchive(input: files, type: .tar.bz2) >> archive\n    saveFile(input: archive, ask: true)\n}"
+    },
+    {
+        "instruction": "Create an iOS shortcut: File Organizer, allowing file selection and offering options to either delete or archive as .tar.xz and save the files.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: folder\nselectFile(multiple: true) >> files\nmenu(What do you want to do with these files?, [Delete, Archive]) {\ncase(Delete):\n    deleteFile(input: files)\ncase(Archive):\n    makeArchive(input: files, type: .tar.xz) >> archive\n    saveFile(input: archive, ask: true)\n}"
+    },
+    {
+        "instruction": "Create an iOS shortcut: File Organizer, allowing file selection and offering options to either delete or archive as .tar and save the files.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: folder\nselectFile(multiple: true) >> files\nmenu(What do you want to do with these files?, [Delete, Archive]) {\ncase(Delete):\n    deleteFile(input: files)\ncase(Archive):\n    makeArchive(input: files, type: .tar) >> archive\n    saveFile(input: archive, ask: true)\n}"
+    },
+    {
+        "instruction": "Create an iOS shortcut: File Organizer, allowing file selection and offering options to either delete or archive as .gz and save the files.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: folder\nselectFile(multiple: true) >> files\nmenu(What do you want to do with these files?, [Delete, Archive]) {\ncase(Delete):\n    deleteFile(input: files)\ncase(Archive):\n    makeArchive(input: files, type: .gz) >> archive\n    saveFile(input: archive, ask: true)\n}"
+    },
+    {
+        "instruction": "Create an iOS shortcut: File Organizer, allowing file selection and offering options to either delete or archive as .cpio and save the files.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: folder\nselectFile(multiple: true) >> files\nmenu(What do you want to do with these files?, [Delete, Archive]) {\ncase(Delete):\n    deleteFile(input: files)\ncase(Archive):\n    makeArchive(input: files, type: .cpio) >> archive\n    saveFile(input: archive, ask: true)\n}"
+    },
+    {
+        "instruction": "Create an iOS shortcut for daily planning. This shortcut captures the current date, allows the user to input their main goal for the day, appends this goal to a note containing the date, and offers an option to share the note or exit the shortcut.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: purple, #Icon: note\ntext(text: \"${CurrentDate}\") >> dateText\ncreateNote(text: dateText) >> NewNote\naskForInput(prompt: \"What's your main goal for today?\", type: Text) >> mainGoal\nappendNote(text: \"${mainGoal}\", note: NewNote)\nmenu(Do you want to share your mainGoal note?, [Yes, No]) {\ncase(Yes):\n    share(file: NewNote)\ncase(No):\n    exit()\n}"
+    },
+    {
+        "instruction": "Create an iOS shortcut for daily planning. This shortcut captures the current date, allows the user to input their main goal for the day, appends this goal to a note, and then offers the user the choice to display the note or exit the shortcut.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: purple, #Icon: note\ntext(text: \"${CurrentDate}\") >> dateText\ncreateNote(text: dateText) >> NewNote\naskForInput(prompt: \"What's your main goal for today?\", type: Text) >> mainGoal\nappendNote(text: \"${mainGoal}\", note: NewNote)\nmenu(Do you want to show your mainGoal note?, [Yes, No]) {\ncase(Yes):\n    showNote(note: NewNote)\ncase(No):\n    exit()\n}"
+    },
+    {
+        "instruction": "Create an iOS shortcut for packing. This shortcut presents a list of items, allows the user to select multiple items they need to pack, and creates a note listing all selected items.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: green, #Icon: person\nlist(items: [\"Toothbrush\", \"Towel\", \"Passport\", \"Charger\", \"Sunglasses\"]) >> itemList\nchoose(list: itemList, prompt: What do you need to pack?, multiple: true) >> selectedItems\nrepeatEach(selectedItems){\n    var Result+=Repeat Item\n}\ntext(text: \"You have selected ${Result}\") >> packText\ncreateNote(text: packText)"
+    },    
+    {
+        "instruction": "Create an iOS shortcut that starts playing the 'Morning Coffee' playlist, waits for five minutes, vibrates the phone, checks the current weather conditions, and displays an alert about whether or not to carry an umbrella based on whether it's raining.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: orange, #Icon: person2alt\ngetPlaylist(name: \"Morning Coffee\") >> Playlist\nplayMusic(music: Playlist, shuffle: songs)\nwait(seconds: 300)\nvibrate()\nsetWiFi(state: true)\ngetCurrentConditions() >> CurrentConditions\nif(CurrentConditions.contains \"Rainy\") {\n\talert(alert: \"Don't forget your umbrella!\", title: \"\", cancel: false)\n} else {\n\talert(alert: \"Have a sunny day!\", title: \"\", cancel: false)\n}"
+    },
+    {
+        "instruction": "Create an iOS shortcut to append text to a file specified by the user. This shortcut prompts the user for the file's path, appends text to the file, and alerts the user that new content has been added.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: orange, #Icon: folder\naskForInput(prompt: \"Your file's path?\", type: Text) >> FilePath\nappendFile(input: Ask, path: FilePath, newLine: true)\nalert(alert: \"You have appended new content to a file\", cancel: false)"
+    },
+    {
+        "instruction": "Create an iOS shortcut to select files, filter them by name 'Meta',check if the file size is exactly '10MB', and share the file if it meets the criteria.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: orange, #Icon: folder\nselectFile() >> Files\nfilterFiles(input: Files, filterType: All, filter: {Name: == : Meta}, sortBy: Creation Date, order: Oldest First, limit: 5) >> Files1\nrepeatEach(Files1) {\n    fileDetail(input: Repeat Item, property: File Size) >> FileSize\n    if(FileSize.as(Text) == \"10MB\") {\n        share(file: Repeat Item)\n    }\n}"
+    },
+    {
+        "instruction": "Create an iOS shortcut to select files, check each file's creation date, and share the file if it was created in the year 2024.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: orange, #Icon: folder\nselectFile() >> Files\nrepeatEach(Files) {\n    fileDetail(input: Repeat Item, property: Creation Date) >> CreationDate\n    if(CreationDate.as(Text).contains \"2024\") {\n        share(file: Repeat Item)\n    }\n}"
+    },
+    {
+        "instruction": "Create an iOS shortcut to select files, check each file's creation date, and share the file if it was created in April",
+        "input": "",
+        "output": "import Shortcuts\n#Color: orange, #Icon: folder\nselectFile() >> Files\nrepeatEach(Files) {\n    fileDetail(input: Repeat Item, property: Creation Date) >> CreationDate\n    if(CreationDate.as(Text).contains \"APR\") {\n        share(file: Repeat Item)\n    }\n}"
+    },
+    {
+        "instruction": "Create an iOS shortcut to select a file, retrieve its detailed information (including file extension, creation date, and last modified date), and compile this information into a note.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: orange, #Icon: folder\nselectFile() >> SelectedFile\nfileDetail(input: SelectedFile, property: File Extension) >> FileExtension\nfileDetail(input: SelectedFile, property: Creation Date) >> CreationDate\nfileDetail(input: SelectedFile, property: Last Modified Date) >> LastModifiedDate\ntext(text: \"This file's FileExtension is ${FileExtension}, Creation Date is ${CreationDate}, Last Modified Date is ${LastModifiedDate}\") >> FileInfo\ncreateNote(text: FileInfo)"
+    },
+    {
+        "instruction": "Create an iOS shortcut to generate a QR code from user input and display it using Quick Look.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: Red, #Icon: shortcuts\ntext(text: \"${Ask}\") >> Text\ncreateQR(text: \"${Text}\") >> QR\nquicklook(input: QR)"
+    },
+    {
+        "instruction": "Create an iOS shortcut to play a number guessing game. The user has 20 chances to guess a random number between 1 and 100.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: purple, #Icon: paperAirplane\nrandomNumber(min: 1, max: 100) >> RandomNumber\nnumber(value: 0) >> Number\nvar Guesses = Number\nrepeat(20) {\n    math(input: Guesses, operation: +, operand: 1) >> CalculationResult\n    var Guesses1 = CalculationResult\n    askForInput(prompt: \"Pick a number between 1 and 100.\", type: Number) >> ProvidedInput\n    if(ProvidedInput.as(Number) == RandomNumber) {\n        showResult(text: \"You got it! Congratulations! It took you ${Guesses} guesses.\")\n        exit()\n    } else {\n        if(ProvidedInput.as(Number) < RandomNumber) {\n            showResult(text: \"Your number is too low. Try again.\")\n        } else {\n            showResult(text: \"Your number is too high. Try again.\")\n        }\n    }\n} >> RepeatResult"
+    },
+    {
+        "instruction": "Create an iOS shortcut to edit text. The user can correct spelling, convert text to speech, or translate text to another language.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: documentOutline\naskForInput(prompt: \"Please insert the text you would like to edit.\", type: Text) >> ProvidedInput\nmenu(How would you like to edit this text?, [Correct Spelling, Text to speech, Translate]) {\ncase(\"Correct Spelling\"):\n    correctSpelling(text: \"${ProvidedInput}\") >> CorrectedSpelling\n    text(text: \"${CorrectedSpelling}\") >> Text\n    setClipboard(variable: Text)\n    alert(alert: \"Copied to clipboard!\")\ncase(\"Text to speech\"):\n    spokenAudioFromText(text:\"${ProvidedInput}\", language:\"en-US\", pitch:1.0, rate:0.5, voice:\"Alex\") >> SpokenAudio\n    quicklook(input: SpokenAudio)\n    exit()\ncase(\"Translate\"):\n    askForInput(prompt: \"What language do you want to translate it to?\", type: Text) >> ToLanguage\n    translateText(text: \"${ProvidedInput}\", to: ToLanguage) >> TranslatedText\n    text(text: \"${TranslatedText}\") >> Text1\n    setClipboard(variable: Text1)\n    alert(alert: \"Copied to clipboard!\")\n} >> MenuResult"
+    },
+    {
+        "instruction": "Create an iOS shortcut to translate text and speak the translated text aloud.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: syncArrows\naskForInput(prompt: \"What text would you like to translate?\", type: Text) >> ProvidedInput\ntranslateText(text: \"${ProvidedInput}\", to: Ask) >> TranslatedText\nspeakText(text: \"${TranslatedText}\")"
+    },
+    {
+        "instruction": "Create an iOS shortcut to translate text to different languages and speak the translated text aloud.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: syncArrows\naskForInput(prompt: \"What text would you like to translate?\", type: Text) >> ProvidedInput\nmenu(choose language you want to translate it to?, [Chinese Simplified, English, Japanese, French]) {\ncase(\"Chinese Simplified\"):\n    translateText(text: \"${ProvidedInput}\", to: Chinese Simplified) >> TranslatedText\n    speakText(text: \"${TranslatedText}\")\ncase(\"English\"):\n    translateText(text: \"${ProvidedInput}\", to: English) >> TranslatedText1\n    speakText(text: \"${TranslatedText1}\")\ncase(\"Japanese\"):\n    translateText(text: \"${ProvidedInput}\", to: Japanese) >> TranslatedText2\n    speakText(text: \"${TranslatedText2}\")\ncase(\"French\"):\n    translateText(text: \"${ProvidedInput}\", to: French) >> TranslatedText3\n    speakText(text: \"${TranslatedText3}\")\n} >> Result"
+    },
+    {
+        "instruction": "Create an iOS shortcut to translate text from the clipboard to different languages and speak the translated text aloud.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: syncArrows\ngetClipboard() >> Clipboard\nmenu(choose language you want to translate it to?, [Chinese Traditional, Dutch, Greek, Korean]) {\ncase(\"Chinese Simplified\"):\n    translateText(text: \"${Clipboard}\", to: Chinese Traditional) >> TranslatedText\n    speakText(text: \"${TranslatedText}\")\ncase(\"Dutch\"):\n    translateText(text: \"${Clipboard}\", to: Dutch) >> TranslatedText1\n    speakText(text: \"${TranslatedText1}\")\ncase(\"Greek\"):\n    translateText(text: \"${Clipboard}\", to: Greek) >> TranslatedText2\n    speakText(text: \"${TranslatedText2}\")\ncase(\"Korean\"):\n    translateText(text: \"${Clipboard}\", to: Korean) >> TranslatedText3\n    speakText(text: \"${TranslatedText3}\")\n} >> Result"
+    },
+    {
+        "instruction": "Create an iOS shortcut to generate random math problems based on user-defined minimum and maximum values, allowing the user to solve the problems and check their answers.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: teal, #Icon: circledPlus\naskForInput(prompt: \"What should be the minimum?\", type: Number) >> ProvidedInput\naskForInput(prompt: \"What should be the maximum?\", type: Number) >> ProvidedInput1\nrepeat(10) {\n    var Minimum = ProvidedInput\n    var Maximum = ProvidedInput1\n    randomNumber(min: Minimum, max: Maximum) >> randomNumber1\n    var RandomNumber1 = randomNumber1\n    randomNumber(min: Minimum, max: Maximum) >> randomNumber2\n    var RandomNumber2 = randomNumber2\n    list(items: [\"+\", \"-\", \"/\", \"*\"]) >> List\n    getItemFromList(list: List, type: Random Item) >> RandomItem\n    var RandomOperation = RandomItem\n    math(input: RandomNumber1, operation: RandomOperation, operand: RandomNumber2) >> CorrectResult\n    askForInput(prompt: \"What’s ${RandomNumber1} ${RandomItem} ${RandomNumber2}?\", type: Number) >> UserResult\n    if (CorrectResult.as(Number) == UserResult.as(Number)) {\n        alert(alert: \"Congrats! You got it right!\")\n    } else {\n        alert(alert: \"Wrong! The answer was: ${CorrectResult}. Your answer was ${UserResult}.\")\n    }\n} >> RepeatResult\nif (RandomNumber1 == nil) {\n    alert(alert: \"Minimum is bigger than Maximum?\")\n} else {\n} >> IFResult2"
+    },
+    {
+        "instruction": "Create an iOS shortcut to generate random addition math problems.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: teal, #Icon: circledPlus\naskForInput(prompt: \"What should be the minimum value for the numbers?\", type: Number) >> MinimumValue\naskForInput(prompt: \"What should be the maximum value for the numbers?\", type: Number) >> MaximumValue\nrandomNumber(min: MinimumValue, max: MaximumValue) >> FirstNumber\nrandomNumber(min: MinimumValue, max: MaximumValue) >> SecondNumber\nmath(input: FirstNumber, operation: +, operand: SecondNumber) >> CorrectResult\ntext(text: \"What is ${FirstNumber} + ${SecondNumber}?\") >> MathProblem\naskForInput(prompt: MathProblem, type: Number) >> UserAnswer\nif (CorrectResult.as(Number) == UserAnswer.as(Number)) {\n    alert(alert: \"Correct! Well done!\")\n} else {\n    alert(alert: \"Incorrect. The correct answer is ${CorrectResult}.\")\n}"
+    },
+    {
+        "instruction": "Create an iOS shortcut to generate random multiplication math problems.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: teal, #Icon: circledPlus\naskForInput(prompt: \"What should be the minimum value for the numbers?\", type: Number) >> MinimumValue\naskForInput(prompt: \"What should be the maximum value for the numbers?\", type: Number) >> MaximumValue\nrandomNumber(min: MinimumValue, max: MaximumValue) >> FirstNumber\nrandomNumber(min: MinimumValue, max: MaximumValue) >> SecondNumber\nmath(input: FirstNumber, operation: *, operand: SecondNumber) >> CorrectResult\ntext(text: \"What is ${FirstNumber} * ${SecondNumber}?\") >> MathProblem\naskForInput(prompt: MathProblem, type: Number) >> UserAnswer\nif (CorrectResult.as(Number) == UserAnswer.as(Number)) {\n    alert(alert: \"Correct! Well done!\")\n} else {\n    alert(alert: \"Incorrect. The correct answer is ${CorrectResult}.\")\n}"
+    },    
+    {
+        "instruction": "Create an iOS shortcut to access image blur options and related settings.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: navy, #Icon: picture\ntext(text: \"Blur image \") >> Text\nmenu(, [\"Blur image\", \"Settings\"]) {\ncase(\"Blur image\"):\n    openURL(url: \"https://pinetools.com/blur-image\")\ncase(\"Settings\"):\n    menu(\"Settings\", [\"Share\", \"Website link\"]) {\n        case(\"Share\"):\n            url(url: \"https://www.icloud.com/shortcuts/d0662b33d1b140328ccfbe639ea89672\") >> URL\n            share(file: URL)\n        case(\"Website link\"):\n            sendNotification(body: \"Here's the link -> https://pinetools.com/blur-image\", title: \"Link\", sound: false)\n    }\n} >> MenuResult"
+    },   
+    {
+        "instruction": "Create an iOS shortcut to select a photo, resize it, and save it to the camera roll.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: purple, #Icon: picture\nselectPhoto() >> photo\naskForInput(prompt: \"Enter the height for resizing the image\", type: Number) >> Height\naskForInput(prompt: \"Enter the width for resizing the image\", type: Number) >> Width\nresizeImage(image: photo, height: Height, width: Width) >> ResizedImage\nsaveToCameraRoll(image: ResizedImage, album: Recent)"
+    },
+    {
+        "instruction": "Create an iOS shortcut to select a photo, resize it, and share the resized image.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: purple, #Icon: picture\nselectPhoto() >> photo\naskForInput(prompt: \"Enter the height for resizing the image\", type: Number) >> Height\naskForInput(prompt: \"Enter the width for resizing the image\", type: Number) >> Width\nresizeImage(image: photo, height: Height, width: Width) >> ResizedImage\nshare(file: ResizedImage)"
+    },
+    {
+        "instruction": "Create an iOS shortcut to select a photo, resize it, and share the resized image.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: purple, #Icon: picture\nselectPhoto() >> photo\nresizeImage(image: photo, height: Ask, width: Ask) >> ResizedImage\nshare(file: ResizedImage)"
+    },
+    {
+        "instruction": "Create an iOS shortcut to either transfer files to photos or photos to files.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: Red, #Icon: shortcuts\nmenu(\"Which way?\", [\"Files to Photos\", \"Photos to Files\"]) {\ncase(\"Files to Photos\"):\n    selectFile() >> selectedFile\n    var File = selectedFile\n    saveToCameraRoll(image: File, album: Ask) >> saveToCameraRoll\ncase(\"Photos to Files\"):\n    selectPhoto() >> selectedPhoto\n    var File = selectedPhoto\n    saveFile(input: File) >> saveFile\n}"
+    },
+    {
+        "instruction": "Create an iOS shortcut to record photography location and related notes.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: grayBlue, #Icon: locationPin\ngetLocation() >> CurrentLocation\nvar Location = CurrentLocation\ntext(text: \"${CurrentLocation.get(Latitude)}, ${CurrentLocation.get(Longitude)}\") >> Text\nsetClipboard(variable: Text)\nformatDate(date: \"${CurrentDate}\", dStyle: Long, tStyle: Medium) >> FormattedDate\ntext(text: \"Photo notes for ${FormattedDate}\") >> NoteName\ngetCurrentConditions() >> CurrentConditions\ncreateNote(text: \"${NoteName} ${CurrentConditions} at ${FormattedDate} ${Text}\", show: false) >> createNote\nsendNotification(body: \"Photography location recorded as ${Location.get(City)}\") >> sendNotification"
+    },
+    {
+        "instruction": "Create an iOS shortcut to add overlay text to a selected photo and perform various actions like saving, deleting, and sharing the modified photo.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: newsArticle\nselectPhoto() >> Photo\nimageDetail(detail: Date Taken, image: Photo) >> DateTaken\naskForInput(prompt: \"Your name\", type: Text) >> Name\nvar Content = \"\"\"${Name}\n${DateTaken}\n\"\"\"\ntext(\"${Content}\") >> Text\noverlayText(image: Photo, text: \"${Text}\", position: Bottom Left) >> ImageWithText\nmenu(\"What's up?\", [\"Save and Delete old photo\", \"Save and Share\", \"Share Only\"]) {\ncase(\"Save and Delete old photo\"):\n    saveToCameraRoll(image: ImageWithText) >> SaveToCameraRoll\n    deletePhotos(photos: Photo) >> DeletePhotos\ncase(\"Save and Share\"):\n    saveToCameraRoll(image: ImageWithText) >> SaveToCameraRoll1\n    share(file: ImageWithText)\ncase(\"Share Only\"):\n    share(file: ImageWithText)\n} >> MenuResult"
+    },
+    {
+        "instruction": "Create an iOS shortcut to overlay text at the bottom middle position of a selected photo.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: newsArticle\nselectPhoto() >> Photo\nimageDetail(detail: Date Taken, image: Photo) >> DateTaken\naskForInput(prompt: \"Your name\", type: Text) >> Name\nvar Content = \"\"\"${Name}\n${DateTaken}\n\"\"\"\ntext(\"${Content}\") >> Text\noverlayText(image: Photo, text: \"${Text}\", position: Bottom Middle) >> ImageWithText\nshare(file: ImageWithText)"
+    },
+    {
+        "instruction": "Create an iOS shortcut to overlay text at the top right position of a selected photo.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: newsArticle\nselectPhoto() >> Photo\nimageDetail(detail: Date Taken, image: Photo) >> DateTaken\naskForInput(prompt: \"Your name\", type: Text) >> Name\nvar Content = \"\"\"${Name}\n${DateTaken}\n\"\"\"\ntext(\"${Content}\") >> Text\noverlayText(image: Photo, text: \"${Text}\", position: Top Right) >> ImageWithText\nshare(file: ImageWithText)"
+    },
+    {
+        "instruction": "Create an iOS shortcut to overlay text at the center position of a selected photo.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: newsArticle\nselectPhoto() >> Photo\nimageDetail(detail: Date Taken, image: Photo) >> DateTaken\naskForInput(prompt: \"Your name\", type: Text) >> Name\nvar Content = \"\"\"${Name}\n${DateTaken}\n\"\"\"\ntext(\"${Content}\") >> Text\noverlayText(image: Photo, text: \"${Text}\", position: Center) >> ImageWithText\nshare(file: ImageWithText)"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Calculate and display the result of an expression",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: calculator\naskForInput(prompt: \"Your expression is\", type: Text) >> ProvideInput\ncalculate(input: \"${ProvideInput}\") >> Result\nshowResult(text: \"The answer is ${Result}\")"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Calculate the result from clipboard content and update the clipboard",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: calculator\ngetClipboard() >> Clipboard\ncalculate(input: \"${Clipboard}\") >> Result\nsetClipboard(variable: Result)\nshowResult(text: \"The answer is ${Result}\")"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Send an alert of your current battery level and adjust network settings based on battery level.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: battery\nBatteryLevel() >> BatteryLevel\nif(BatteryLevel.as(Number) < 20) {\n    setWiFi(state: false)\n} else {\n    setBluetooth(value: true)\n}\ngetLocation() >> Location\nlocationDetail(detail: Street, location: Location) >> CurrentStreet\nshowResult(text: \"Now, You are at ${CurrentStreet}.\")"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Send an alert indicating whether your battery level is low and enable low power mode if necessary.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: green, #Icon: battery\nbatteryLevel() >> BatteryLevel\nif(BatteryLevel.as(Number) < 20) {\n    lowPowerMode(state: true)\n    showResult(text: \"Low power mode is on\")\n} else {\n    showResult(text: \"Sufficient battery\")\n}"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Toggle network settings when leaving or returning home.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: person\nmenu(choose mode, [leave home, go home]) {\n    case(\"leave home\"):\n        setWiFi(state: false)\n        setBluetooth(value: false)\n        setCellular(state: false)\n    case(\"go home\"):\n        setWiFi(state: true)\n        setBluetooth(value: true)\n        setCellular(state: true)\n}"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Prompt for an emergency message and repeat sending it via vibration, text display, and speech.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: messagebubbles\naskForInput(prompt: \"Enter emergency message\", type: Text) >> Message\nrepeat(5) {\n    vibrate()\n    text(text: \"${Message}\") >> Text\n    speakText(text: \"${Text}\")\n}"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Configure your phone settings for a meeting with options for silent, airplane mode, or vibrate only.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: grayBlue, #Icon: person\nmenu(A meeting is about to begin, how would you like to set up your phone?, [Silent, Airplane mode, Vibrate only]) {\n    case(\"Silent\"):\n        setVolume(level: 0)\n    case(\"Airplane mode\"):\n        setAirplaneMode(state: true)\n    case(\"Vibrate only\"):\n        vibrate()\n}\nshowResult(text: \"Conference mode setting completed\")"
+    },
+    {
+        "instruction": "Create an iOS shortcut: An easy way to get the image of the day from NASE",
+        "input": "",
+        "output": "import Shortcuts\n#Color: navy, #Icon: telescope\ngetRSSItems(url: \"http://apod.nasa.gov/apod.rss\", count: 1) >> RSSItems\nurlContents(url: \"${RSSItems}\") >> Contents\ngetImagesFrom(input: Contents) >> Images\nquicklook(input: Images)\nmenu(, [Save image, Share]) {\n    case(\"Save Image\"):\n        saveToCameraRoll(image: Images)\n    case(\"Share\"):\n        share(file: Images)\n}"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Perform a mathematical operation with user-defined values and round the result to the nearest tens place.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: Red, #Icon: shortcuts\nmath(input: Ask, operation: Ask, operand: Ask) >> CalculationResult\nround(number: CalculationResult, roundTo: Tens Place) >> round"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Provide various options to assist the user, including a calculator, definition lookup, notes, translator, and settings.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: green, #Icon: glasses\ntext(text: \"Choose something to help you!\") >> text\nmenu(, [Calculator, Definition, Notes, Translator, Settings]) {\n    case(\"Calculator \"):\n        showWebPage(url: \"https://www.mathway.com/Algebra\") >> showWebPage\n    case(\"Definition\"):\n        askForInput(prompt: \" Put a word in the box for you to find out what it means!\", type: Text) >> ProvidedInput\n        showDefinition(text: \"${ProvidedInput}\")\n    case(\"Notes\"):\n        openApp(id: \"com.apple.mobilenotes\") >> openApp\n    case(\"Translator\"):\n        showWebPage(url: \"https://translate.google.com\", reader: false) >> showWebPage1\n    case(\"Settings\"):\n        menu(Settings, [Credits, About, Back]) {\n            case(\"Credits\"):\n                alert(alert: \"Made by CoolM\")\n            case(\"About\"):\n                alert(alert: \"I made this for fun \")\n            case(\"Back\"):\n                runShortcut(name: \"School Helper\") >> runShortcut\n        }\n} >> MenuResult"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Generate a QR code for connecting to a Wi-Fi network by providing the SSID and password.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: navy, #Icon: wifi\nwifiDetails() >> WLAN-Name\naskForInput(prompt: \"What is the name of your Wi-Fi network?\", type: Text, default: \"${Wi-Fi Name}\") >> SSID\naskForInput(prompt: \"What is the password for ${SSID}?\",type: Text) >> Password\ntext(text: \"WIFI:S:${SSID};T:WPA;P:${Password};;\") >> Text\ncreateQR(text: \"${Text}\", correction: High) >> QRCode\nshowResult(text: \"${QRCode}\")"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Convert a website to PDF by providing its URL.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: Red, #Icon: wifi\ntext(text: \"This tool turns any website into a PDF. Simply enter the URL of the website you want as a PDF in the next step.\") >> text\nalert(alert: \"In the next step, please enter the URL you want to have as a PDF\")\naskForInput(prompt: \"\", type: URL) >> ProvidedInput\ncreatePDF(input: ProvidedInput, margins: true, pages: All Pages, singlePageNumb: \"1\") >> createPDF\nalert(alert: \"The page is now saved to Books\", cancel: false)\nopenApp(id: \"com.apple.iBooks\") >> openApp"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Split a PDF document into multiple pages.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: Red, #Icon: openbook\nsplitPDF(document: Ask)"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Extract text from a PDF document.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: Red, #Icon: openbook\ngetTextFromPDF(textType: Text, pdf: Ask)>>PDFText\nshowResult(text: \"${PDFText}\")"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Extract text from a PDF document and copy it to the clipboard.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: Red, #Icon: openbook\ngetTextFromPDF(textType: Text, pdf: Ask)>>PDFText\nsetClipboard(variable: PDFText)"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Extract an image from a PDF document and provide options to save or share it.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: Red, #Icon: openbook\nimageFromPDF(pdf: Ask, format: PDF, colorspace: RGB, resolution: 300)>>Image\nmenu(save or share?,[save,share]){\n    case(\"save\"):\n        saveToCameraRoll(image: Image)\n    case(\"share\"):\n        share(file: Image)\n}"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Extract images from a PDF document, allow the user to choose images for markup, and save the marked-up images to the camera roll. Ensure that the images are extracted in RGB color space.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: Red, #Icon: openbook\nselectFile()>>PDF\nimageFromPDF(pdf: PDF, format: PDF, colorspace: RGB, resolution: 300)>>Images\nchoose(list: Images, prompt: \"choose images to mark up\", multiple: true)>>ChosenImages\nrepeatEach(ChosenImages){\n    markup(input: Repeat Item)>>MarkedImage\n    saveToCameraRoll(image: MarkedImage)\n}"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Extract images from a PDF document, allow the user to choose images for markup, and save the marked-up images to the camera roll. Ensure that the images are extracted in CMYK color space.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: Red, #Icon: openbook\nselectFile()>>PDF\nimageFromPDF(pdf: PDF, format: PDF, colorspace: CMYK, resolution: 300)>>Images\nchoose(list: Images, prompt: \"choose images to mark up\", multiple: true)>>ChosenImages\nrepeatEach(ChosenImages){\n    markup(input: Repeat Item)>>MarkedImage\n    saveToCameraRoll(image: MarkedImage)\n}"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Extract images from a PDF document, allow the user to choose images for markup, and save the marked-up images to the camera roll. Ensure that the images are extracted in Gray color space.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: Red, #Icon: openbook\nselectFile()>>PDF\nimageFromPDF(pdf: PDF, format: PDF, colorspace: Gray, resolution: 300)>>Images\nchoose(list: Images, prompt: \"choose images to mark up\", multiple: true)>>ChosenImages\nrepeatEach(ChosenImages){\n    markup(input: Repeat Item)>>MarkedImage\n    saveToCameraRoll(image: MarkedImage)\n}"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Extract images from a PDF document, allowing the user to select the color space (RGB, CMYK, or Gray) for image extraction, and save the extracted images to the 'Recents' album in the camera roll.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: Red, #Icon: openbook\nselectFile()>>PDF\nlist(items: [\"RGB\",\"CMYK\",\"Gray\"])>>List\nchoose(list: List, prompt: \"Select color space\", multiple: false)>>ColorSpace\nimageFromPDF(pdf: PDF, format: PDF, colorspace: ColorSpace, resolution: 300)>>Images\nsaveToCameraRoll(image: Images, album: \"Recents\")"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Prompt the user to input a word and display its definition.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: closedBook\naskForInput(prompt: \"Please type the word you need the definition of.\", type: Text) >> ProvidedInput\nshowDefinition(text: \"${ProvidedInput}\")"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Display the definition of the text stored in the clipboard.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: closedBook\ngetClipboard() >> Clipboard\nshowDefinition(text: \"${Clipboard}\")"
+    },    
+    {
+        "instruction": "Create an iOS shortcut: Reduce storage by deleting photos or files, or access device settings.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: Red, #Icon: gear\ntext(text: \"Reduce storage\") >> Text\nmenu(What option are you going to choose?, [Photos, Files, Open settings]) {\n    case(\"Photos\"):\n        selectPhoto(multiple: true) >> Photos\n        deletePhotos(photos: Photos) >> deletePhotos\n    case(\"Files\"):\n        selectFile(multiple: true) >> File\n        deleteFile(input: File)\n    case(\"Open settings\"):\n        openApp(id: \"com.apple.Preferences\")\n} >> MenuResult"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Convert a video to audio and copy the audio to the clipboard.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: headphones\nselectPhoto() >> Photos\nencodeMedia(media: Photos) >> encodedMedia\nsetClipboard(variable: encodedMedia) >> setClipboard"
+    },
+    {
+        "instruction": "Create an iOS shortcut: RSS Reader",
+        "input": "",
+        "output": "import Shortcuts\n#Color: tangerine, #Icon: sashBook\naskForInput(prompt: \"How many items?\", type: Number) >> ProvidedInput\ngetRSSItems(url: \"https://${Ask}\", count: ProvidedInput) >> RSSItems\nshowResult(text: \"${RSSItems}\")"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Access and display the latest articles in Emergency Medicine from selected sources.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: blue, #Icon: feed\ndictionary({\"Name\":\"RSS Emergency\",\"Version\":\"1.0\",\"Author \":\"yazan414\"})\nmenu(Please select a source to get the latest articles in Emergency Medicine :, [Medscape (USA), Medgadget (USA), Scandinavian Journal, NEJM Journal Watch (USA), Irish College of Paramedics (Ireland), Annals of Emergency Medicine (USA), Emergency Medicine Cases (Canada), The Emergency Medicine Journal (UK), R.E.B.E.L. EM - Emergency Medicine (USA), American College of Emergency Physicians (USA), Emergency Department Critical Care & Resuscitation (USA)]) {\n    case(\"Medscape (USA)\"):\n        url(url: \"https://www.medscape.com/cx/rssfeeds/2673.xml\") >> URL\n        getRSSItems(url: \"${URL}\", count: 15) >> RSSItems\n        filterArticles(input: RSSItems, sortBy: Published Date, order: Latest First)>>Articles\n        choose(list: Articles) >> ChosenItem\n        openURL(url: ChosenItem)\n    case(\"Medgadget (USA)\"):\n        url(url: \"https://www.medgadget.com/emergency_medicine/feed\") >> URL1\n        getRSSItems(url: \"${URL1}\", count: 15) >> RSSItems1\n        filterArticles(input: RSSItems1, sortBy: Published Date, order: Latest First)>>Articles1\n        choose(list: Articles1) >> ChosenItem1\n        openURL(url: ChosenItem1)\n    case(\"Scandinavian Journal\"):\n        url(url: \"https://sjtrem.biomedcentral.com/articles/most-recent/rss.xml\") >> URL2\n        getRSSItems(url: \"${URL2}\", count: 15) >> RSSItems2\n        filterArticles(input: RSSItems2, sortBy: Published Date, order: Latest First)>>Articles2\n        choose(list: Articles2) >> ChosenItem2\n        openURL(url: ChosenItem2)\n    case(\"NEJM Journal Watch (USA)\"):\n        url(url: \"https://www.jwatch.org/emergency-medicine/rss\") >> URL3\n        getRSSItems(url: \"${URL3}\", count: 15) >> RSSItems3\n        filterArticles(input: RSSItems3, sortBy: Published Date, order: Latest First)>>Articles3\n        choose(list: Articles3) >> ChosenItem3\n        openURL(url: ChosenItem3)\n    case(\"Irish College of Paramedics (Ireland)\"):\n        url(url: \"http://irishparamedic.com/feed/\") >> URL4\n        getRSSItems(url: \"${URL4}\", count: 15) >> RSSItems4\n        filterArticles(input: RSSItems4, sortBy: Published Date, order: Latest First)>>Articles4\n        choose(list: Articles4) >> ChosenItem4\n        openURL(url: ChosenItem4)\n    case(\"Annals of Emergency Medicine (USA)\"):\n        url(url: \"https://www.annemergmed.com/content/rss\")>>URL5\n        getRSSItems(url: \"${URL5}\", count: 15) >> RSSItems5\n        filterArticles(input: RSSItems5, sortBy: Published Date, order: Latest First)>>Articles5\n        choose(list: Articles5) >> ChosenItem5\n        openURL(url: ChosenItem5)\n    case(\"Emergency Medicine Cases (Canada)\"):\n        url(url: \"https://emergencymedicinecases.com/feed/\") >> URL6\n        getRSSItems(url: \"${URL6}\", count: 15) >> RSSItems6\n        filterArticles(input: RSSItems6, sortBy: Published Date, order: Latest First)>>Articles6\n        choose(list: Articles6) >> ChosenItem6\n        openURL(url: ChosenItem6)\n    case(\"The Emergency Medicine Journal (UK)\"):\n        url(url: \"https://emj.bmj.com/rss/recent.xml\") >> URL7\n        getRSSItems(url: \"${URL7}\", count: 15) >> RSSItems7\n        filterArticles(input: RSSItems7, sortBy: Published Date, order: Latest First)>>Articles7\n        choose(list: Articles7) >> ChosenItem7\n        openURL(url: ChosenItem7)\n    case(\"R.E.B.E.L. EM - Emergency Medicine (USA)\"):\n        url(url: \"http://rebelem.com/feed/\") >> URL8\n        getRSSItems(url: \"${URL8}\", count: 15) >> RSSItems8\n        filterArticles(input: RSSItems8, sortBy: Published Date, order: Latest First)>>Articles8\n        choose(list: Articles8) >> ChosenItem8\n        openURL(url: ChosenItem8)\n    case(\"American College of Emergency Physicians (USA)\"):\n        url(url: \"https://www.acepnow.com/feed/\") >> URL9\n        getRSSItems(url: \"${URL9}\", count: 15) >> RSSItems9\n        filterArticles(input: RSSItems9, sortBy: Published Date, order: Latest First)>>Articles9\n        choose(list: Articles9) >> ChosenItem9\n        openURL(url: ChosenItem9)\n    case(\"Emergency Department Critical Care & Resuscitation (USA)\"):\n        url(url: \"https://emcrit.org/feed/\") >> URL10\n        getRSSItems(url: \"${URL10}\", count: 15) >> RSSItems10\n        filterArticles(input: RSSItems10, sortBy: Published Date, order: Latest First)>>Articles10\n        choose(list: Articles10) >> ChosenItem10\n        openURL(url: ChosenItem10)\n} >> MenuResult"
+    },    
+    {
+        "instruction": "Create an iOS shortcut: Access and display the latest articles from selected subreddits.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: alien\ncase(\"/r/aww\"):\nurl(url: \"www.reddit.com/r/aww.rss\") >> URL\ngetRSSItems(url: \"${URL}\") >> RSSItems\nfilterArticles(input: RSSItems) >> Articles\nchoose(list: Articles) >> ChosenItem\nshowWebPage(url: \"${ChosenItem}\")\ncase(\"Showerthoughts\"):\nurl(url: \"www.reddit.com/r/showerthoughts.rss\") >> URL1\ngetRSSItems(url: \"${URL}\") >> RSSItems1\nfilterArticles(input: RSSItems1) >> Articles1\nchoose(list: Articles1) >> ChosenItem1\nshowWebPage(url: \"${ChosenItem1}\")\ncase(\"/r/AITA\"):\nurl(url: \"www.reddit.com/r/amitheasshole.rss\") >> URL2\ngetRSSItems(url: \"${URL}\") >> RSSItems2\nfilterArticles(input: RSSItems2) >> Articles2\nchoose(list: Articles2) >> ChosenItem2\nshowWebPage(url: \"${ChosenItem2}\")\ncase(\"/r/Gaming\"):\nurl(url: \"www.reddit.com/r/gaming.rss\") >> URL3\ngetRSSItems(url: \"${URL}\") >> RSSItems3\nfilterArticles(input: RSSItems3) >> Articles3\nchoose(list: Articles3) >> ChosenItem3\nshowWebPage(url: \"${ChosenItem3}\")\ncase(\"/r/InternetIsBeautiful\"):\nurl(url: \"www.reddit.com/r/internetisbeautiful.rss\") >> URL4\ngetRSSItems(url: \"${URL}\") >> RSSItems4\nfilterArticles(input: RSSItems4) >> Articles4\nchoose(list: Articles4) >> ChosenItem4\nshowWebPage(url: \"${ChosenItem4}\")\ncase(\"/r/Funny\"):\nurl(url: \"www.reddit.com/r/funny.rss\") >> URL5\ngetRSSItems(url: \"${URL5}\") >> RSSItems5\nfilterArticles(input: RSSItems5) >> Articles5\nchoose(list: Articles5) >> ChosenItem5\nshowWebPage(url: \"${ChosenItem5}\")\ncase(\"/r/Movies\"):\nurl(url: \"www.reddit.com/r/movies.rss\") >> URL6\ngetRSSItems(url: \"${URL6}\") >> RSSItems6\nfilterArticles(input: RSSItems6) >> Articles6\nchoose(list: Articles6) >> ChosenItem6\nshowWebPage(url: \"${ChosenItem6}\")\ncase(\"/r/Science\"):\nurl(url: \"www.reddit.com/r/science.rss\") >> URL7\ngetRSSItems(url: \"${URL}\") >> RSSItems7\nfilterArticles(input: RSSItems7) >> Articles7\nchoose(list: Articles7) >> ChosenItem7\nshowWebPage(url: \"${ChosenItem}\")\ncase(\"/r/TIFU\"):\nurl(url: \"www.reddit.com/r/tifu.rss\") >> URL8\ngetRSSItems(url: \"${URL8}\") >> RSSItems8\nfilterArticles(input: RSSItems8) >> Articles8\nchoose(list: Articles8) >> ChosenItem8\nshowWebPage(url: \"${ChosenItem8}\")\ncase(\"/r/AskHistorians\"):\nurl(url: \"www.reddit.com/r/askhistorians.rss\") >> URL9\ngetRSSItems(url: \"${URL9}\") >> RSSItems9\nfilterArticles(input: RSSItems9) >> Articles9\nchoose(list: Articles9) >> ChosenItem9\nshowWebPage(url: \"${ChosenItem9}\")\ncase(\"/r/News\"):\nurl(url: \"www.reddit.com/r/news.rss\") >> URL10\ngetRSSItems(url: \"${URL10}\") >> RSSItems10\nfilterArticles(input: RSSItems10) >> Articles10\nchoose(list: Articles10) >> ChosenItem10\nshowWebPage(url: \"${ChosenItem10}\")\ncase(\"/r/Technology\"):\nurl(url: \"reddit.com/r/technology.rss\") >> URL11\ngetRSSItems(url: \"${URL11}\") >> RSSItems11\nfilterArticles(input: RSSItems11) >> Articles11\nchoose(list: Articles11) >> ChosenItem11\nshowWebPage(url: \"${ChosenItem11}\")\n"
+    },
+    {
+        "instruction": "Create an iOS shortcut: Read the latest news from MacStories RSS feed and display it.",
+        "input": "",
+        "output": "import Shortcuts\n#Color: red, #Icon: phone\nvar Lines = Shortcuts\ntext(text: \"MacStories\") >> SiteName\nurl(url: \"https://macstories.net/feed/\") >> RSSURL\ngetRSSItems(url: \"${RSSURL}\", count: 5) >> RSSItems\nrepeatEach(RSSItems) {\n    getName() >> Name\n    var News += Name\n    var content = \"\"\"${Lines}\n${Name}\n\"\"\"\ntext(\"${content}\") >> Text\n    var Lines = Text\n} >> RepeatResult\n\nshowResult(text: \"Reading the latest news from ${SiteName}...\\n${Lines}\")"
+    },
+    {
+        "instruction": "Log daily water intake to track hydration.",
+        "input": "",
+        "output": "import Shortcuts\naskForInput(prompt: \"Enter water intake in liters:\", type: Number) >> waterIntake\ncreateNote(text: \"Logged ${waterIntake} liters of water today.\")"
+    },
+    {
+        "instruction": "Generate a weekly meal plan based on dietary preferences.",
+        "input": "",
+        "output": "import Shortcuts\nmenu('Select your diet type:', ['Vegan', 'Keto', 'Paleo', 'General']) >> dietType\ngetURL(url: 'http://example.com/api/mealplan/${dietType}') >> mealPlan\nalert(alert: 'Your meal plan for the week is ready!', title: 'Meal Plan', cancel: false)"
+    },
+    {
+        "instruction": "Deliver a daily motivational quote.",
+        "input": "",
+        "output": "import Shortcuts\ngetURL(url: \"http://example.com/api/quotes/today\") >> quote\nalert(alert: \"${quote}\", title: \"Daily Motivation\", cancel: false)"
+    },
+    {
+        "instruction": "Track daily expenses and categorize them.",
+        "input": "",
+        "output": "import Shortcuts\naskForInput(prompt: \"Enter expense amount:\", type: Number) >> amount\nmenu(Select Category:, [Food, Transport, Entertainment]) >> category\ncreateNote(text: \"Logged an expense of ${amount} in ${category}.\")"
+    },
+    {
+        "instruction": "Set and track a daily fitness challenge.",
+        "input": "",
+        "output": "import Shortcuts\nmenu(Select exercise:, [Steps, Running, Cycling]) >> exerciseType\naskForInput(prompt: \"Set your goal:\", type: Number) >> goal\ncreateNote(text: \"Today's fitness challenge: ${goal} ${exerciseType}.\")"
+    },
+    {
+        "instruction": "Set a timer for meditation with calming sounds.",
+        "input": "",
+        "output": "import Shortcuts\nmenu(Select duration:, [5 minutes, 10 minutes, 20 minutes]) >> duration\nmenu(\"Select sound type:\", [\"Nature\", \"White noise\", \"Instrumental\"]) >> soundType\nplaySound(sound: \"${soundType}\")\nwait(duration: \"${duration}\")\nalert(alert: \"Meditation complete\", title: \"Timer\", cancel: false)"
+    },
+    {
+        "instruction": "Fetch and display the top news headlines.",
+        "input": "",
+        "output": "import Shortcuts\nmenu(Select category:, [World, Local, Sports]) >> category\ngetURL(url: \"http://example.com/news/${category}\") >> news\nalert(alert: \"Top headlines: ${news}\", title: \"News Update\", cancel: false)"
+    },
+    {
+        "instruction": "Automatically sort incoming emails into folders.",
+        "input": "",
+        "output": "import Shortcuts\naskForInput(prompt: \"Enter keyword for sorting:\", type: Text) >> keyword\nif (emailSubject.contains(\"${keyword}\")) {\n    moveEmail(to: \"${keyword} Folder\")\n    alert(alert: \"Email moved to ${keyword} Folder\", title: \"Email Sorter\", cancel: false)\n} else {\n    alert(alert: \"No emails matched the keyword.\" title: \"Email Sorter\", cancel: false)\n}"
+    },
+    {
+        "instruction": "Track the status of a shipped package.",
+        "input": "",
+        "output": "import Shortcuts\naskForInput(prompt: \"Enter tracking number:\", type: Text) >> trackingNumber\ngetURL(url: \"http://example.com/track/${trackingNumber}\") >> status\nalert(alert: \"Current status: ${status}\", title: \"Package Tracker\", cancel: false)"
+    },
+    {
+        "instruction": "Learn new words in a foreign language through daily flashcards.",
+        "input": "",
+        "output": "import Shortcuts\nmenu(Select language:, [Spanish, French, Chinese]) >> language\ngetURL(url: \"http://example.com/flashcards/${language}\") >> word\nalert(alert: \"Word of the day: ${word}\", title: \"Language Learner\", cancel: false)"
+    },
+    {
+        "instruction": "Generate a detailed daily schedule based on tasks and appointments.",
+        "input": "",
+        "output": "import Shortcuts\naskForInput(prompt: \"Enter today's tasks, separated by commas:\", type: Text) >> tasks\nsplit(text: \"${tasks}\", separator: \",\") >> taskList\naskForInput(prompt: \"Enter appointment times, separated by commas:\", type: Text) >> times\nsplit(text: \"${times}\", separator: \",\") >> timeList\ncombine(lists: [taskList, timeList], separator: \" at \") >> schedule\nforEach(item: schedule, action: {\n    createReminder(title: \"${item}\")\n})\nalert(alert: \"Your schedule has been created with reminders.\", title: \"Daily Schedule\", cancel: false)"
+    },
+    {
+        "instruction": "Track expenses, categorize them, and update a spreadsheet.",
+        "input": "",
+        "output": "import Shortcuts\naskForInput(prompt: \"Enter expense amount:\", type: Number) >> amount\nmenu(Select Category:, [Groceries, Utilities, Rent]) >> category\naskForInput(prompt: \"Enter date (YYYY-MM-DD):\", type: Text) >> date\ngetURL(url: \"http://example.com/spreadsheet/update?amount=${amount}&category=${category}&date=${date}\") >> response\nalert(alert: \"Expense logged: ${response}\", title: \"Expense Tracker\", cancel: false)"
+    },
+    {
+        "instruction": "Set fitness goals, track workouts, and sync with health app.",
+        "input": "",
+        "output": "import Shortcuts\nmenu(Select workout type:, [Yoga, Weightlifting, Cardio]) >> workoutType\naskForInput(prompt: \"Enter workout duration in minutes:\", type: Number) >> duration\ncreateNote(text: \"Logged ${duration} minutes of ${workoutType} on ${CurrentDate}.\")\nsyncHealthData(data: {\"Type\": \"${workoutType}\", \"Duration\": \"${duration}\"})\nalert(alert: \"Workout logged and synced with Health app.\", title: \"Fitness Tracker\", cancel: false)"
+    },
+    {
+        "instruction": "Control smart home devices based on time of day.",
+        "input": "",
+        "output": "import Shortcuts\nmenu(Select device:, [Lights, Thermostat, Security Camera]) >> device\nmenu(Select action:, [On, Off, Adjust]) >> action\nif (timeOfDay() < \"18:00\") {\n    controlDevice(device: \"${device}\", action: \"${action}\")\n    alert(alert: \"${device} turned ${action} before 6 PM.\", title: \"Smart Home Control\", cancel: false)\n} else {\n    controlDevice(device: \"${device}\", action: \"${action}\")\n    alert(alert: \"${device} turned ${action} after 6 PM.\", title: \"Smart Home Control\", cancel: false)\n}"
+    },
+    {
+        "instruction": "Guide through the steps of cooking a recipe with timers for each step.",
+        "input": "",
+        "output": "import Shortcuts\nmenu(Select a recipe:, [Pasta, Stir Fry, Soup]) >> recipe\ngetURL(url: \"http://example.com/recipes/${recipe}/steps\") >> steps\nsplit(text: \"${steps}\", separator: \";\") >> stepList\nforEach(item: stepList, action: {\n    alert(alert: \"Next step: ${item}\", title: \"Cooking Step\", cancel: false)\n    askForInput(prompt: \"Enter time for this step in minutes:\", type: Number) >> time\n    wait(minutes: \"${time}\")\n})\nalert(alert: \"Cooking complete. Enjoy your meal!\", title: vMeal Preparation\", cancel: false)"
+    },
+    {
+        "instruction": "Set reminders for upcoming health checkups and sync with calendar.",
+        "input": "",
+        "output": "import Shortcuts\nmenu(Select checkup type:, [Dental, Vision, General]) >> checkupType\naskForInput(prompt: \"Enter appointment date (YYYY-MM-DD):\", type: Text) >> appointmentDate\ncreateCalendarEvent(title: \"${checkupType} Checkup\", start: \"${appointmentDate}\", end: \"${appointmentDate}\")\nalert(alert: \"Reminder set for ${checkupType} checkup on ${appointmentDate}.\", title: \"Health Checkup Reminder\", cancel: false)"
+    },
+    {
+        "instruction": "Schedule tasks based on priority and deadlines.",
+        "input": "",
+        "output": "import Shortcuts\naskForInput(prompt: \"Enter task details:\", type: Text) >> taskDetails\naskForInput(prompt: \"Enter deadline (YYYY-MM-DD):\", type: Text) >> deadline\nmenu(Select priority:, [High, Medium, Low]) >> priority\ncreateReminder(title: \"${taskDetails}\", dueDate: \"${deadline}\", priority: \"${priority}\")\nalert(alert: \"Task scheduled: ${taskDetails} by ${deadline} with ${priority} priority.\", title: \"Task Scheduler\", cancel: false)"
+    },
+    {
+        "instruction": "Advise on investments based on current financial news and trends.",
+        "input": "",
+        "output": "import Shortcuts\nmenu(Select investment type:, [Stocks, Bonds, Cryptocurrency]) >> investmentType\ngetURL(url: \"http://example.com/finance/news?type=${investmentType}\") >> financeNews\ngetURL(url: \"http://example.com/finance/trends?type=${investmentType}\") >> financeTrends\ncombineText(text: [\"Latest news: ${financeNews}\", \"Market trends: ${financeTrends}\"], separator: \"\n\") >> financeAdvice\nalert(alert: \"Investment Advice:\n${financeAdvice}\", title: \"Personal Finance Advisor\", cancel: false)"
+    },
+    {
+        "instruction": "Control home devices based on time and presence.",
+        "input": "",
+        "output": "import Shortcuts\nmenu(Are you home?, [Yes, No]) >> presenceStatus\nif (presenceStatus == \"Yes\") {\n    menu(Select device to control:, [Lights, Heating, Security System]) >> device\n    menu(Select action:, [Turn On, Turn Off]) >> action\n    controlDevice(device: \"${device}\", action: \"${action}\")\n    alert(alert: \"${device} ${action} when home.\", title: \"Home Automation\", cancel: false)\n} else {\n    controlDevice(device: \"Security System\", action: \"Turn On\")\n    alert(alert: \"Security system activated when away.\", title: \"Home Automation\", cancel: false)\n}"
+    },
+    {
+        "instruction": "Create a dynamic to-do list that adapts based on the time of day.",
+        "input": "",
+        "output": "import Shortcuts\naskForInput(prompt: \"Enter morning tasks:\", type: Text) >> morningTasks\naskForInput(prompt: \"Enter afternoon tasks:\", type: Text) >> afternoonTasks\nif (currentTime() < \"12:00\") {\n    createNote(text: \"Morning Tasks: ${morningTasks}\")\n} else {\n    createNote(text: 'Afternoon Tasks: ${afternoonTasks}\")\n}\nalert(alert: \"Tasks updated based on time of day.\", title: \"Dynamic To-Do List\", cancel: false)"
+    },
+    {
+        "instruction": "Track time spent on various projects and calculate weekly totals.",
+        "input": "",
+        "output": "import Shortcuts\naskForInput(prompt: \"Enter project name:\", type: Text) >> projectName\naskForInput(prompt: \"Enter time spent in hours:\", type: Number) >> hoursSpent\ngetURL(url: '\"http://example.com/time_tracking?project=${projectName}&hours=${hoursSpent}\") >> updatedTotal\nalert(alert: \"Total hours for ${projectName} this week: ${updatedTotal}\", title: \"Project Time Tracker\", cancel: false)"
+    },
+    {
+        "instruction": "Automate daily journal entries with prompts based on mood and activities.",
+        "input": "",
+        "output": "import Shortcuts\nmenu(How do you feel today?, [Happy, Sad, Stressed]) >> mood\naskForInput(prompt: \"Describe today's main activity:\", type: Text) >> activity\ncreateNote(text: \"Date: ${CurrentDate}\nMood: ${mood}\nActivity: ${activity}\")\nalert(alert: \"Journal entry created for today.\", title: \"Daily Journal\", cancel: false)"
+    },
+    {
+        "instruction": "Monitor indoor air quality and suggest actions based on AQI readings.",
+        "input": "",
+        "output": "import Shortcuts\naskForInput(prompt: \"Enter current AQI reading:\", type: Number) >> aqi\nif (aqi > 100) {\n    alert(alert: \"Consider using an air purifier or limiting outdoor activities.\", title: \"Air Quality Alert\", cancel: false)\n} else {\n    alert(alert: \"Air quality is good. No actions needed.\", title: \"Air Quality Check\", cancel: false)\n}"
+    },
+    {
+        "instruction": "Organize weekly grocery shopping list by store sections.",
+        "input": "",
+        "output": "import Shortcuts\naskForInput(prompt: \"Enter grocery items and their sections separated by comma:\", type: Text) >> items\nsplit(text: \"${items}\", separator: \",\") >> itemList\nforEach(item: itemList, action: {\n    split(text: \"${item}\", separator: \":\") >> itemDetails\n    createNote(text: \"Section: ${itemDetails[0]} - Item: ${itemDetails[1]}\")\n})\nalert(alert: \"Grocery list organized by sections.\", title: \"Grocery Organizer\", cancel: false)"
+    },
+    {
+        "instruction": "Set reminders for hydration based on weather temperature.",
+        "input": "",
+        "output": "import Shortcuts\naskForInput(prompt: \"Enter current temperature in Celsius:\", type: Number) >> temperature\nif (temperature > 30) {\n    createReminder(title: \"Drink water every 30 minutes\", dueDate: \"today\")\n    alert(alert: \"Hydration reminder set for high temperatures.\", title: \"Hydration Reminder\", cancel: false)\n} else {\n    createReminder(title: \"Drink water every hour\", dueDate: \"today\")\n    alert(alert: \"Hydration reminder set for normal temperatures.\", title: \"Hydration Reminder\", cancel: false)\n}"
+    },
+    {
+        "instruction": "Automatically send birthday greetings via email.",
+        "input": "",
+        "output": "import Shortcuts\naskForInput(prompt: \"Enter your friend's name:\", type: Text) >> friendName\naskForInput(prompt: \"Enter your friend's email:\", type: Email) >> friendEmail\nsendEmail(to: \"${friendEmail}\", subject: \"Happy Birthday!\", body: \"Dear ${friendName}, wishing you a fantastic birthday filled with happiness!\")\nalert(alert: \"Birthday greeting sent to ${friendName}.\", title: \"Birthday Greeting\", cancel: false)"
+    },
+    {
+        "instruction": "Create a shortcut to compare prices of a product across multiple online stores.",
+        "input": "",
+        "output": "import Shortcuts\naskForInput(prompt: \"Enter the product name:\", type: Text) >> productName\ngetURL(url: \"http://example.com/price_check?product=${productName}\") >> prices\nalert(alert: \"Price comparison for ${productName}: ${prices}\", title: \"Price Check\", cancel: false)"
+    },
+    {
+        "instruction": "Generate a fitness report based on weekly activity data.",
+        "input": "",
+        "output": "import Shortcuts\naskForInput(prompt: \"Enter activities and durations separated by comma:\", type: Text) >> activities\nsplit(text: \"${activities}\", separator: \",\") >> activityList\ncreateNote(text: \"Weekly Fitness Report:\n${activityList.join(\"\n\")}\")\nalert(alert: \"Fitness report generated. Check your notes.\", title: \"Fitness Report\", cancel: false)"
+    },
+    {
+        "instruction": "Summarize key points from a meeting and email them.",
+        "input": "",
+        "output": "import Shortcuts\naskForInput(prompt: \"Enter meeting topic:\", type: Text) >> topic\naskForInput(prompt: \"Enter key points:\", type: Text) >> points\ncreateNote(text: \"Meeting on ${topic}:\nKey Points: ${points}\")\nsendEmail(to: \"team@example.com\", subject: \"Summary of ${topic} Meeting\", body: \"Here are the key points discussed during the meeting: ${points}\")\nalert(alert: \"Meeting summary sent.\", title: \"Meeting Summary\", cancel: false)"
+    },
+    {
+        "instruction": "Automate weekly task review and status update.",
+        "input": "",
+        "output": "import Shortcuts\naskForInput(prompt: \"Enter tasks and status separated by comma:\", type: Text) >> tasks\nsplit(text: \"${tasks}\", separator: \",\") >> taskList\nforEach(item: taskList, action: {\n    split(text: \"${item}\", separator: \":\") >> taskDetails\n    createReminder(title: \"Review task: ${taskDetails[0]}\", dueDate: \"today\", notes: \"Status: ${taskDetails[1]}\")\n})\nalert(alert: \"Task review reminders set.\", title: \"Weekly Task Review\", cancel: false)"
+    },
+    {
+        "instruction": "Track and log daily screen time on various devices.",
+        "input": "",
+        "output": "import Shortcuts\naskForInput(prompt: \"Enter devices and screen time separated by comma:\", type: Text) >> screenTimes\nsplit(text: \"${screenTimes}\", separator: \",\") >> timeList\nforEach(item: timeList, action: {\n    split(text: \"${item}\", separator: \":\") >> timeDetails\n    createNote(text: \"Device: ${timeDetails[0]} - Screen Time: ${timeDetails[1]} hours\")\n})\nalert(alert: \"Screen time logged for today.\", title: \"Daily Screen Time Log\", cancel: false)"
+    },
+    {
+        "instruction": "Notify about local events based on user location and interests.",
+        "input": "",
+        "output": "import Shortcuts\naskForInput(prompt: \"Enter your interests separated by comma:\", type: Text) >> interests\ngetLocation() >> location\ngetURL(url: \"http://example.com/events?location=${location}&interests=${interests}\") >> events\nalert(alert: \"Upcoming local events: ${events}\", title: \"Local Events\", cancel: false)"
+    },
+    {
+        "instruction": "Optimize travel routes based on traffic data and destination.",
+        "input": "",
+        "output": "import Shortcuts\naskForInput(prompt: \"Enter destination:\", type: Text) >> destination\ngetURL(url: \"http://example.com/traffic?destination=${destination}\") >> trafficInfo\nalert(alert: \"Best route to ${destination} considering current traffic: ${trafficInfo}\", title: \"Travel Route Optimization\", cancel: false)"
+    },
+    {
+        "instruction": "Create a personalized workout plan based on fitness goals.",
+        "input": "",
+        "output": "import Shortcuts\naskForInput(prompt: \"Enter your fitness goals:\", type: Text) >> goals\ngetURL(url: http://example.com/workout?goals=${goals}\") >> workoutPlan\nalert(alert: \"Your personalized workout plan: ${workoutPlan}\", title: \"Personalized Workout Plan\", cancel: false)"
+    },
+    {
+        "instruction": "Prepare and send a weekly project status report to your team.",
+        "input": "",
+        "output": "import Shortcuts\naskForInput(prompt: \"Enter project details and status:\", type: Text) >> projectDetails\nsplit(text: \"${projectDetails}\", separator: \";\") >> details\nforEach(item: details, action: {\n    createNote(text: \"Project update: ${item}\")\n})\nsendEmail(to: \"team@example.com\", subject: \"Weekly Project Status Report\", body: \"Please find the attached notes for our project updates.\")\nalert(alert: \"Project status report sent.\", title: \"Project Status Report\", cancel: false)"
+    },
+    {
+        "instruction": "Automatically send a summary of daily sales figures to stakeholders.",
+        "input": "",
+        "output": "import Shortcuts\naskForInput(prompt: \"Enter sales figures:\", type: Number) >> sales\ngetURL(url: \"http://example.com/daily_summary?sales=${sales}\") >> summary\nsendEmail(to: \"stakeholders@example.com\", subject: \"Daily Sales Summary\", body: \"Today's sales summary: ${summary}\")\nalert(alert: \"Daily sales summary sent to stakeholders.\", title: \"Sales Summary, cancel: false)"
+    }    
+]
